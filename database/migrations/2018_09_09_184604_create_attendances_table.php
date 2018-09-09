@@ -21,14 +21,14 @@ class CreateAttendancesTable extends Migration
             $table->integer('subject_id')->unsigned();
             $table->boolean('status');
             $table->boolean('allow');
-            $table->date('data');
+            $table->date('date');
             $table->timestamps();
         });
 
         Schema::table('attendances', function($table) {
             //$table->foreign('teacher_subject_id')->references('id')->on('teacher_subject')->onDelete('cascade');
 
-            $table->foreign('level_id')->references('id')->on('classes')->onDelete('cascade');
+            $table->foreign('level_id')->references('id')->on('levels')->onDelete('cascade');
 
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
 

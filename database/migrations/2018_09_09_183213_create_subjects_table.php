@@ -18,12 +18,12 @@ class CreateSubjectsTable extends Migration
             $table->string('name');
             $table->integer('level_id')->unsigned();
             $table->integer('hours');
-            $table->boolean('subjet_type');
+            $table->boolean('subject_type');
             $table->timestamps();
         });
 
         Schema::table('subjects', function($table) {
-            $table->foreign('level_id')->references('id')->on('classes')->onDelete('cascade');
+            $table->foreign('level_id')->references('id')->on('levels')->onDelete('cascade');
         });
     }
 
