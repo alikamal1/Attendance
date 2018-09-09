@@ -16,14 +16,14 @@ class CreateSubjectsTable extends Migration
         Schema::create('subjects', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('class_id')->unsigned();
+            $table->integer('level_id')->unsigned();
             $table->integer('hours');
             $table->boolean('subjet_type');
             $table->timestamps();
         });
 
         Schema::table('subjects', function($table) {
-            $table->foreign('class_id')->references('id')->on('classes')->onDelete('cascade');
+            $table->foreign('level_id')->references('id')->on('classes')->onDelete('cascade');
         });
     }
 

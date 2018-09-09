@@ -11,9 +11,9 @@ class Attendance extends Model
     	return $this->belongsTo('App\Student');
     }
 
-    public function class()
+    public function level()
     {
-    	return $this->belongsTo('App\Class');
+    	return $this->belongsTo('App\Level');
     }
 
     public function subject()

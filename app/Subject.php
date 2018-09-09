@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Subject extends Model
 {
-    public function class()
+    public function level()
     {
-    	return $this->hasOne('App\Class');
+    	return $this->hasOne('App\Level');
     }
 
     public function attendances()

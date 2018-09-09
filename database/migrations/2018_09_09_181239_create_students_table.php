@@ -16,14 +16,14 @@ class CreateStudentsTable extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('class_id')->unsigned();
+            $table->integer('level_id')->unsigned();
             $table->timestamps();
 
         });
 
         Schema::table('students', function($table) {
 
-            $table->foreign('class_id')->references('id')->on('classes')->onDelete('cascade');
+            $table->foreign('level_id')->references('id')->on('classes')->onDelete('cascade');
 
         });
 
