@@ -15,8 +15,8 @@ class CreateAttendancesTable extends Migration
     {
         Schema::create('attendances', function (Blueprint $table) {
             $table->increments('id');
-            //$table->integer('teacher_subject_id')->unsigned();
-            $table->integer('level_id')->unsigned();
+            $table->integer('subject_teacher_id')->unsigned();
+            //$table->integer('level_id')->unsigned();
             $table->integer('student_id')->unsigned();
             $table->integer('subject_id')->unsigned();
             $table->boolean('status');
@@ -28,7 +28,7 @@ class CreateAttendancesTable extends Migration
         Schema::table('attendances', function($table) {
             //$table->foreign('teacher_subject_id')->references('id')->on('teacher_subject')->onDelete('cascade');
 
-            $table->foreign('level_id')->references('id')->on('levels')->onDelete('cascade');
+            //$table->foreign('level_id')->references('id')->on('levels')->onDelete('cascade');
 
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
 

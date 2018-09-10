@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Special_Casse extends Model
+class SpecialCase extends Model
 {
     public function student()
     {

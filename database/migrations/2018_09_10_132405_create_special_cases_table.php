@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSpecialCassesTable extends Migration
+class CreateSpecialCasesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateSpecialCassesTable extends Migration
      */
     public function up()
     {
-        Schema::create('special__casses', function (Blueprint $table) {
+        Schema::create('special_cases', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('student_id')->unsigned();
             $table->integer('subject_id')->unsigned();
@@ -21,7 +21,7 @@ class CreateSpecialCassesTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('special__casses', function($table) {
+        Schema::table('special_cases', function($table) {
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
             $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');
         });
@@ -34,6 +34,6 @@ class CreateSpecialCassesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('special__casses');
+        Schema::dropIfExists('special_cases');
     }
 }

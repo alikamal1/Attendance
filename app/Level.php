@@ -6,18 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Level extends Model
 {
-    public function Student()
+    public function Students()
     {
-    	return $this->belongsTo('App\Student');
+        return $this->hasMany('App\Student');
     }
 
-    public function subject()
+    public function subjects()
     {
-    	return $this->belongsTo('App\Subject');
+        return $this->hasMany('App\Subject');
     }
 
     public function attendances()
     {
-    	return $this->hasMany('App\Attendance');
+        return $this->hasManyThrough('App\Attendance','App\Student');
     }
 }

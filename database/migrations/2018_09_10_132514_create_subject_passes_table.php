@@ -13,16 +13,17 @@ class CreateSubjectPassesTable extends Migration
      */
     public function up()
     {
-        Schema::create('subject__passes', function (Blueprint $table) {
+        Schema::create('subject_passes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('subject_id')->unsigned();
             $table->integer('hours_count');
             $table->timestamps();
         });
 
-        Schema::table('subject__passes', function($table) {
+        Schema::table('subject_passes', function($table) {
             $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');
         });
+
     }
 
     /**
@@ -32,6 +33,6 @@ class CreateSubjectPassesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subject__passes');
+        Schema::dropIfExists('subject_passes');
     }
 }

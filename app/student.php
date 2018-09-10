@@ -8,16 +8,16 @@ class student extends Model
 {
     public function level()
     {
-    	return $this->hasOne('App\Level');
+        return $this->belongsTo('App\Level');
     }
 
-    public function Special_Cases()
+    public function SpecialCases()
     {
-    	return $this->hasMany('App\Special_Case');
+        return $this->hasMany('App\SpecialCase');
     }
 
     public function attendances()
     {
-    	return $this->hasMany('App\Attendance');
+        return $this->hasMany('App\Attendance');
     }
 }
