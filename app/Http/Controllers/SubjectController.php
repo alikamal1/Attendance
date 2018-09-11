@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Student;
+use App\Setting;
 use App\Level;
+use App\Subject;
 
-class StudentController extends Controller
+class SubjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return view('student.index')->with('level',Level::all());
+        return view('subject.index')->with('level',Level::all())->with('setting',Setting::all());
     }
 
     /**
@@ -25,7 +26,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('student.create')->with('level',Level::all());
+        return view('subject.create')->with('level',Level::all())->with('setting',Setting::all());
     }
 
     /**
@@ -39,14 +40,18 @@ class StudentController extends Controller
         $this->validate($request,[
             'name' => 'required',
             'level_id' => 'required',
+            'hours' => 'required',
+            'subject_type' => 'required',
         ]);
 
-        Student::create([
+        Subejct::create([
             'name' => $request->name,
-            'level_id' -> $request->level_id,
+            'level_id' => $request->level_id,
+            'hours' => $request->hours,
+            'subject_type' => $request->subject_type,
         ]);
 
-        return rediredct()->route('student.create');
+        return rediredct()->route('subject.create');
     }
 
     /**
@@ -57,7 +62,7 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        return view('student.show')->with('level',Student::where('level_id', $id));
+        return view('subject.show')->with('subject',Subject::all());
     }
 
     /**
@@ -68,7 +73,7 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        return view('student.edit')->with('student',Student::find($id));
+        return view('subject.edit')->with('subject',Subject::find($id));
     }
 
     /**
@@ -80,14 +85,14 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $student = Student::find($id);
+        $subject = Subject::find($id);
 
-        $student->name = $request->name;
-        $student->level_id = $request->level_id;
+        $subject->name = $request->name;
+        $subject->level_id = $request->level_id;
 
-        $student->save();
+        $subject->save();
 
-        return redirect()->route('student.index');
+        return redirect()->route('subject.index');
     }
 
     /**
@@ -98,8 +103,8 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        Student::destroy($id);
+        Subject::destroy($id);
 
-        return redirect()->route('student.index');
+        return redirect()->route('subject.index')->with('level',Level::all())->with('setting',Setting::all());;
     }
 }

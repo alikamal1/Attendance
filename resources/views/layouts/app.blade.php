@@ -12,15 +12,51 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-
+    
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bulma.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">
+
+
+    <style type="text/css">
+    @font-face {
+        font-family: Droid Arabic Kufi;
+        src: url('{{ asset('fonts/droidarabickufibold.ttf') }}');
+        font-weight: bold;
+    }
+    @font-face {
+        font-family: Droid Arabic Kufi;
+        src: url('{{ asset('fonts/DroidArabicKufiRegular.ttf') }}');
+    font-weight: normal;
+    }
+
+    * {
+        font-family: Droid Arabic Kufi !important;
+
+    }
+
+    .delete-button {
+        background: white;
+        border: white;
+    }
+    .delete-button:hover {
+        background: white !important;
+        border: white;
+    }
+
+    .card-header {
+        flex-direction: row-reverse;
+    }
+    .table {
+        direction: rtl;
+    }
+   
+</style>
 </head>
 <body>
     <div id="app">
+
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -71,8 +107,66 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+            <div class="container">
+                @if($errors->count() > 0)  
+                <ul class="list-gruop-item">
+                @foreach($errors->all() as $error)
+                        <li class="list-group-item text-danger text-right">{{$error}}</li>
+                    @endforeach
+                    </ul><br><br><br>
+                @endif
+            <div class="row justify-content-center ">
+
+            <div class="col-md-9">
+                @yield('content')
+            </div>  
+
+            <div class="col-md-3">
+            <div class="card ">
+            <div class="card-header"><b> القائمة الرئيسية </b></div>   
+            <div class="card-body">
+                <aside class="menu">
+
+                    <p class="menu-label text-right">
+                      الغيابات
+                    </p>
+                    <ul class="menu-list">
+                    <li class="text-right"><a>ادخال الغياب</a></li>
+                    
+                    </ul>
+
+                    <p class="menu-label text-right">
+                     السنة الدراسية الكاملة 
+                    </p>
+                    <ul class="menu-list">
+                    <li class="text-right"><a>الغيابات</a></li>
+                    <li class="text-right"><a>المراحل الدراسية</a></li>
+                    <li class="text-right"><a>المواد الدارسية</a></li>
+                    <li class="text-right"><a>الطلاب</a></li>
+                    <li class="text-right"><a>التدريسين</a></li>
+                    <li class="text-right"><a></a></li>
+                    <li class="text-right"><a> </a></li>
+                    <li class="text-right"><a href="{{route('setting.index')}}">الاعدادات </a></li>
+                    </ul>
+                    
+                </aside>
+            </div>
+            </div>
+          
         </main>
     </div>
+    </div>
+
+    <script src="{{asset('js/jquery.js')}}"></script>
+    <script src="{{asset('js/toastr.min.js')}}"></script>
+
+    <script>
+
+        @if(Session::has('success'))
+        toastr.options.rtl = true;
+        toastr.options.progressBar = true;
+        toastr.success('{{Session::get('success')}}')    
+        @endif
+    </script>
 </body>
 </html>

@@ -1,0 +1,29 @@
+@extends('layouts.app')
+
+@section('content')
+
+    <div class="card">
+        <div class="card-header">
+            <b>تعديل السنة الدراسية: {{$setting->name}}</b>
+        </div>
+        <div class="card-body">
+         <form action="{{route('setting.update',['id' => $setting->id])}}" method="POST" style="direction: rtl;">
+            {{csrf_field()}}
+            {{ method_field('PUT') }}
+            
+            <div class="form-group">
+                <label for="value" style="float: right;">السنة الدراسية</label>
+                <input type="text" name="value" class="form-control" value="{{$setting->value}}">
+            </div>
+
+            <div class="form-group">
+                <input hidden type="text" name="name" class="form-control" value="السنة">
+            </div>
+                    <button class="btn btn-success btn-block" type="submit">حفظ التغيرات</button>
+        </form> 
+        
+        </div>
+    </div>
+
+@endsection
+

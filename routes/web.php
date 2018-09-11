@@ -19,4 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::resource('/setting','SettingController');
+
+Route::resource('/student','StudentController');
+Route::resource('/subject','SubjectController');
+
+
 Route::get('/students/{id}','StudentController@show');

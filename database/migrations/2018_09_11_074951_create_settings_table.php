@@ -15,13 +15,8 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('year')->nullable();
-            $table->string('study')->nullable();
-            $table->string('stage')->nullable();
-            $table->string('branch')->nullable();
-            $table->string('case_type')->nullable();
-            $table->string('subject_type')->nullable();
-            $table->string('hours')->nullable();
+            $table->string('name');
+            $table->string('value');
             $table->timestamps();
         });
     }
