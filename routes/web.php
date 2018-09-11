@@ -20,9 +20,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/setting','SettingController');
-
+Route::get('/student/studentcreate/{id}','StudentController@studentcreate')->name('students.studentcreate');
 Route::resource('/student','StudentController');
 Route::resource('/subject','SubjectController');
 
+Route::resource('/level','LevelController');
 
-Route::get('/students/{id}','StudentController@show');
+

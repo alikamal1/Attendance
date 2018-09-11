@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Level extends Model
 {
+
+    protected $fillable = ['year','study','stage','branch'];
+
     public function Students()
     {
         return $this->hasMany('App\Student');

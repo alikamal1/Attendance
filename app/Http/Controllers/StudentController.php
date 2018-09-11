@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Student;
+use App\Setting;
 use App\Level;
+use Session;
 
 class StudentController extends Controller
 {
@@ -15,7 +17,9 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return view('student.index')->with('level',Level::all());
+        return view('student.index')->with('levels',Level::all())
+        ->with('settings',Setting::all())
+        ->with('years',Setting::where('name','سنة')->get());
     }
 
     /**
@@ -25,7 +29,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('student.create')->with('level',Level::all());
+
     }
 
     /**
@@ -41,12 +45,13 @@ class StudentController extends Controller
             'level_id' => 'required',
         ]);
 
+
         Student::create([
             'name' => $request->name,
-            'level_id' -> $request->level_id,
+            'level_id' => $request->level_id,
         ]);
-
-        return rediredct()->route('student.create');
+        Session::flash('success','تم الحفظ بنجاح');
+        return redirect()->route('student.show',$request->level_id);
     }
 
     /**
@@ -57,7 +62,9 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        return view('student.show')->with('level',Student::where('level_id', $id));
+        return view('student.show')
+        ->with('level',Level::find($id))
+        ->with('students',Student::where('level_id', $id)->get());
     }
 
     /**
@@ -68,7 +75,16 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        return view('student.edit')->with('student',Student::find($id));
+
+        $level_id = Student::find($id)->level_id;
+        $year = Level::find($level_id)->year;
+        $levels = Level::where('year',$year)->get();
+
+        $studentLevel = Level::find($level_id);
+        return view('student.edit')
+        ->with('levels',$levels)
+        ->with('student',Student::find($id))
+        ->with('studentLevel',$studentLevel);
     }
 
     /**
@@ -80,14 +96,26 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request,[
+            'study' => 'required',
+            'stage' => 'required',
+            'branch' => 'required',
+        ]);
+        $level_id = Level::where([
+            ['year' , $request->year],
+            ['study' , $request->study],
+            ['stage' , $request->stage],
+            ['branch' , $request->branch],
+        ])->first()->id;
+
         $student = Student::find($id);
 
         $student->name = $request->name;
-        $student->level_id = $request->level_id;
+        $student->level_id =$level_id;
 
         $student->save();
-
-        return redirect()->route('student.index');
+        Session::flash('success','تم التعديل بنجاح');
+        return redirect()->route('student.show',$level_id);
     }
 
     /**
@@ -98,8 +126,15 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
+        $level_id = Student::find($id)->level_id;
         Student::destroy($id);
+        Session::flash('success','تم الحذف بنجاح');
+        return redirect()->route('student.show',$level_id);
+    }
 
-        return redirect()->route('student.index');
+    public function studentcreate($id)
+    {
+        return view('student.create')
+        ->with('level',Level::find($id));
     }
 }

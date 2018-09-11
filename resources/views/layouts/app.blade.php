@@ -139,14 +139,12 @@
                      السنة الدراسية الكاملة 
                     </p>
                     <ul class="menu-list">
-                    <li class="text-right"><a>الغيابات</a></li>
-                    <li class="text-right"><a>المراحل الدراسية</a></li>
-                    <li class="text-right"><a>المواد الدارسية</a></li>
-                    <li class="text-right"><a>الطلاب</a></li>
-                    <li class="text-right"><a>التدريسين</a></li>
-                    <li class="text-right"><a></a></li>
-                    <li class="text-right"><a> </a></li>
-                    <li class="text-right"><a href="{{route('setting.index')}}">الاعدادات </a></li>
+                    <li class="text-right"><a  href="{{route('setting.index')}}">الغيابات</a></li>
+                    <li class="text-right"><a href="{{route('level.index')}}" {{ strpos(url()->current(),'level') > 0  ? "class=is-active":"" }}>السنة الدراسية</a></li>
+                    <li class="text-right"><a href="{{route('setting.index')}}">المواد الدارسية</a></li>
+                    <li class="text-right"><a href="{{route('student.index')}}">الطلاب</a></li>
+                    <li class="text-right"><a href="{{route('setting.index')}}">التدريسين</a></li>
+                    <li class="text-right"><a href="{{route('setting.index')}}" {{ strpos(url()->current(),'setting') > 0  ? "class=is-active":"" }}>الاعدادات </a></li>
                     </ul>
                     
                 </aside>
