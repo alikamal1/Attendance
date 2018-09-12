@@ -29,6 +29,8 @@ Route::get('/subject/subjectcreate/{id}','SubjectController@subjectcreate')->nam
 Route::get('/subject/showsubject/{year}', 'subjectController@showsubject')->name('subject.showsubject');
 Route::resource('/subject','SubjectController');
 
+Route::get('/teacher/select/{subject_id}/{teacher_id}/{year}','TeacherController@select')->name('teacher.select');
+Route::get('/teacher/unselect/{subject_id}/{teacher_id}/{year}','TeacherController@unselect')->name('teacher.unselect');
 Route::post('/teacher/subject_teacher/{id}', 'TeacherController@subject_teacher')->name('teacher.subject_teacher');
 Route::resource('/teacher', 'TeacherController');
 

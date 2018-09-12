@@ -36,7 +36,7 @@
             </td>
             <td class="text-right">
                 <a href="{{route('teacher.show',['id'=>$teacher->id])}}">
-                    <img width="30px" height="30px" src="{{asset('images/edit.png')}}" title="تعديل" alt="تعديل">
+                    <img width="30px" height="30px" src="{{asset('images/subject.png')}}" title="تعديل" alt="تعديل">
                 </a>
             </td>
             <td class="text-right">

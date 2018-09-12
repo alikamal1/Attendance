@@ -1,97 +1,90 @@
 @extends('layouts.app')
 
 @section('content')
-
-
-
 <div class="card border-dark">
     <div class="card-header text-white bg-dark">
-        <b>قوائم الطلاب  السنة الدراسية {{$level->year}}</b>
+        <b>{{$teacher->username}} تخصيص المواد الدراسية للتدريسي </b>
     </div>
+@foreach($levels as $level)
+
+
     <div class="card-body">
-     <table class="table table-hover text-right">
-        <thead class="thead-light">
-        <tr>
-            <th class="text-right">
+             <table class="table table-hover text-center">
+
+         <tr>
+            <th class="text-center">
                الدراسة
             </th>
-            <th class="text-right">
+            <th class="text-center">
                 المرحلة
             </th>
-            <th class="text-right">
+            <th class="text-center">
                 الاختصاص
             </th>
         </tr>
-        </thead>
-        <tbody>
             <tr >
-            <td class="text-right">
+            <td class="text-center">
                 {{$level->study}}
             </td>
-            <td class="text-right">
+            <td class="text-center">
                 {{$level->stage}}
             </td>    
-            <td class="text-right">
+            <td class="text-center">
                 {{$level->branch}}
             </td>
             </tr>  
-        </tbody>
-    </table> 
-    
-    </div>
-</div>
-
-<br>
-
-<div class="card border-dark">
-    <div class="card-header text-white bg-dark">
-        <b>قوائم الطلاب  السنة الدراسية {{$level->year}}</b>
-    </div>
-    <div class="card-body">
+        </table>
      <table class="table table-hover text-right">
+
         <thead class="thead-light">
         <tr>
             <th class="text-right">
-               اسم الطالب
+               اسم المادة
             </th>
             <th class="text-right">
-                تعديل
+                نوع المادة
             </th>
             <th class="text-right">
-                حذف
+                عدد الساعات
             </th>
+            <th colspan="2" class="text-right">
+                تخصيص المادة للتدريسي
+            </th> 
+            
         </tr>
         </thead>
         <tbody>
-            @foreach($students as $student)
+
+            @foreach($level->subjects()->get() as $subject)
             <tr >
             <td class="text-right">
-                {{$student->name}}
+                {{$subject->name}}
             </td>
             <td class="text-right">
-                <a href="{{route('student.edit',['id'=>$student->id])}}">
-                    <img width="30px" height="30px" src="{{asset('images/edit.png')}}" title="تعديل" alt="تعديل">
-                </a>
+                {{$subject->subject_type}}
             </td>
             <td class="text-right">
-                <form action="{{ route('student.destroy',['id'=>$student->id]) }}" method="POST">
-                    {{csrf_field()}}
-                    {{ method_field('DELETE') }}
-                    <button class="delete-button" title="حذف" type="submit"> <img width="30px" height="30px" src="{{asset('images/delete.png')}}" title="حذف" alt="حذف">
-                    </button>
-                </form>
+                {{$subject->hours}}
+            </td>
+            <td colspan="2" class="text-right">
+
+                @if(is_null($s_t->where('subject_id',$subject->id)->first() ))
+                <a class="btn btn-success btn-block" href="{{route('teacher.select',['subject_id'=>$subject->id,'teacher_id'=>$teacher->id,'year'=>$level->year])}}" title="">اختيار</a>
+                @else
+                <a class="btn btn-danger btn-block" href="{{route('teacher.unselect',['subject_id'=>$subject->id,'teacher_id'=>$teacher->id,'year'=>$level->year])}}" title="">الغاء</a>
+                @endif
             </td>
             </tr>  
             @endforeach
 
-            <a href="{{route('students.studentcreate',$level->id)}}" class="btn btn-success btn-block" type="submit">اضافة طالب جديد</a> 
             
         </tbody>
     </table> 
-    <td colspan="3">
-            <a href="{{route('students.studentcreate',$level->id)}}" class="btn btn-success btn-block" type="submit">اضافة طالب جديد</a> </td>
-    </div>
-</div>
 
+    </div>
+
+<hr style="background: black;">
+@endforeach
+</div>
 @endsection
 

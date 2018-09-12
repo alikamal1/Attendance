@@ -174,6 +174,7 @@
         @if(Session::has('success'))
         toastr.options.rtl = true;
         toastr.options.progressBar = true;
+        toastr.options.positionClass = "toast-bottom-right";
         toastr.success('{{Session::get('success')}}')    
         @endif
     </script>

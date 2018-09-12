@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Teacher;
 use App\Level;
 use App\Setting;
+use App\SubjectTeacher;
 use Hash;
 use Session;
 class TeacherController extends Controller
@@ -121,10 +122,41 @@ class TeacherController extends Controller
 
     public function subject_teacher(Request $request, $id)
     {
-        $level = Level::where('year',$request->year)->get();
-        dd($level);
+        
         return view('teacher.subject_teacher')
+        ->with('teacher',Teacher::find($id)->first())
+        ->with('levels',Level::where('year',$request->year)->get())
+        ->with('s_t',SubjectTeacher::where('teacher_id',$id)->get());
+    
+    }
 
-        ->with('teacher',Teacher::find($id));
+    public function select($subject_id,$teacher_id,$year)
+    {
+        SubjectTeacher::create([
+            'subject_id' => $subject_id,
+            'teacher_id' => $teacher_id
+        ]);
+
+        Session::flash('success','تم الحفظ بنجاح');
+
+        return view('teacher.subject_teacher')
+        ->with('teacher',Teacher::find($teacher_id)->first())
+        ->with('levels',Level::where('year',$year)->get())
+        ->with('s_t',SubjectTeacher::where('teacher_id',$teacher_id)->get());;
+
+    }
+
+    public function unselect($subject_id,$teacher_id,$year)
+    {
+        $id = SubjectTeacher::where('subject_id',$subject_id)->where('teacher_id',$teacher_id)->first()->id;
+        
+        SubjectTeacher::destroy($id);
+
+        Session::flash('success','تم الحذف بنجاح');
+
+        return view('teacher.subject_teacher')
+        ->with('teacher',Teacher::find($teacher_id)->first())
+        ->with('levels',Level::where('year',$year)->get())
+        ->with('s_t',SubjectTeacher::where('teacher_id',$teacher_id)->get());;
     }
 }

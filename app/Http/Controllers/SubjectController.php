@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Setting;
 use App\Level;
 use App\Subject;
+use Session;
 
 class SubjectController extends Controller
 {
@@ -50,7 +51,7 @@ class SubjectController extends Controller
             'hours' => $request->hours,
             'subject_type' => $request->subject_type,
         ]);
-
+        Session::flash('success','تم الحفظ بنجاح');
         return redirect()->route('subject.showsubject',$request->year);
     }
 
@@ -100,6 +101,7 @@ class SubjectController extends Controller
         $subject->level_id = $request->level_id;
 
         $subject->save();
+        Session::flash('success','تم التعديل بنجاح');
 
         return redirect()->route('subject.showsubject', $request->year);
     }
@@ -140,6 +142,7 @@ class SubjectController extends Controller
     public function destroysubject($id,$year)
     {
         Subject::destroy($id);
+        Session::flash('success','تم الحذف بنجاح');
 
         return redirect()->route('subject.showsubject',$year);
     }
