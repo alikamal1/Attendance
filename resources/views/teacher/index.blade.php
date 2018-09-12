@@ -4,7 +4,7 @@
 
 <div class="card border-dark">
     <div class="card-header text-white bg-dark">
-        <b>استماء التدريسين </b>
+        <b>اسماء التدريسين </b>
     </div>
     <div class="card-body">
     <a class="btn btn-primary btn-block" href="{{route('teacher.create')}}">
