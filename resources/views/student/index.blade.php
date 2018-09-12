@@ -5,13 +5,13 @@
 
 @foreach($years as $year)
 
-<div class="card">
-    <div class="card-header">
+<div class="card border-dark">
+    <div class="card-header text-white bg-dark">
         <b>قوائم الطلاب  السنة الدراسية {{$year->value}}</b>
     </div>
     <div class="card-body">
      <table class="table table-hover text-right">
-        <thead>
+        <thead class="thead-light">
         <tr>
             <th class="text-right">
                الدراسة

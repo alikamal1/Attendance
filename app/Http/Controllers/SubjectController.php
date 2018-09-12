@@ -16,7 +16,7 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        return view('subject.index')->with('level',Level::all())->with('setting',Setting::all());
+        return view('subject.index')->with('years',Setting::where('name','سنة')->get());
     }
 
     /**
@@ -44,14 +44,14 @@ class SubjectController extends Controller
             'subject_type' => 'required',
         ]);
 
-        Subejct::create([
+        Subject::create([
             'name' => $request->name,
             'level_id' => $request->level_id,
             'hours' => $request->hours,
             'subject_type' => $request->subject_type,
         ]);
 
-        return rediredct()->route('subject.create');
+        return redirect()->route('subject.showsubject',$request->year);
     }
 
     /**
@@ -73,7 +73,7 @@ class SubjectController extends Controller
      */
     public function edit($id)
     {
-        return view('subject.edit')->with('subject',Subject::find($id));
+
     }
 
     /**
@@ -85,14 +85,23 @@ class SubjectController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request,[
+            'name' => 'required',
+            'level_id' => 'required',
+            'hours' => 'required',
+            'subject_type' => 'required',
+        ]);
+
         $subject = Subject::find($id);
 
         $subject->name = $request->name;
+        $subject->hours = $request->hours;
+        $subject->subject_type = $request->subject_type;
         $subject->level_id = $request->level_id;
 
         $subject->save();
 
-        return redirect()->route('subject.index');
+        return redirect()->route('subject.showsubject', $request->year);
     }
 
     /**
@@ -103,8 +112,36 @@ class SubjectController extends Controller
      */
     public function destroy($id)
     {
+        
+    }
+    public function showsubject($year)
+    {
+
+        return view('subject.show')
+        ->with('levels',Level::where('year',$year)->get());
+    }
+
+    public function subjectcreate($id)
+    {
+        return view('subject.create')
+        ->with('hours',Setting::where('name','ساعة')->get())
+        ->with('subject_types',Setting::where('name','مادة')->get())
+        ->with('level',Level::find($id));
+    }
+
+    public function subjectedit($id,$year)
+    {
+        return view('subject.edit')
+        ->with('hours',Setting::where('name','ساعة')->get())
+        ->with('subject_types',Setting::where('name','مادة')->get())
+        ->with('subject',Subject::find($id))
+        ->with('year',$year);
+    }
+    public function destroysubject($id,$year)
+    {
         Subject::destroy($id);
 
-        return redirect()->route('subject.index')->with('level',Level::all())->with('setting',Setting::all());;
+        return redirect()->route('subject.showsubject',$year);
     }
+        
 }

@@ -9,9 +9,9 @@ use Faker\Generator as Faker;
 $factory->define(App\Subject::class, function (Faker $faker) {
     return [
         'name' => $faker->sentence(),
-        'level_id' => App\Level::find($faker->numberBetween(1,20))->id,
-        'hours' => $faker->numberBetween(1,4),
-        'subject_type' => $faker->boolean(),
+        'level_id' => $faker->numberBetween(1,20),
+        'hours' => App\Setting::where('name','ساعة')->inRandomOrder()->first()->value,
+        'subject_type' => App\Setting::where('name','مادة')->inRandomOrder()->first()->value,
     ];
 });
 

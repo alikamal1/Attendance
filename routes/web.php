@@ -22,7 +22,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/setting','SettingController');
 Route::get('/student/studentcreate/{id}','StudentController@studentcreate')->name('students.studentcreate');
 Route::resource('/student','StudentController');
+
+Route::get('/subject/subjectedit/{id}/{year}','SubjectController@subjectedit')->name('subject.subjectedit');
+Route::get('/subject/destroysubject/{id}/{year}','SubjectController@destroysubject')->name('subject.destroysubject');
+Route::get('/subject/subjectcreate/{id}','SubjectController@subjectcreate')->name('subject.subjectcreate');
+Route::get('/subject/showsubject/{year}', 'subjectController@showsubject')->name('subject.showsubject');
 Route::resource('/subject','SubjectController');
+
+Route::post('/teacher/subject_teacher/{id}', 'TeacherController@subject_teacher')->name('teacher.subject_teacher');
+Route::resource('/teacher', 'TeacherController');
+
 
 Route::resource('/level','LevelController');
 

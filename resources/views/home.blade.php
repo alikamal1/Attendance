@@ -2,8 +2,8 @@
 
 @section('content')
 
-    <div class="card">
-        <div class="card-header">Dashboard</div>
+    <div class="card border-dark">
+        <div class="card-header text-white bg-dark">Dashboard</div>
         
         <div class="card-body">
             @if (session('status'))

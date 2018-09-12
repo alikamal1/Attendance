@@ -3,8 +3,8 @@
 @section('content')
 
 
-<div class="card">
-        <div class="card-header">
+<div class="card border-dark">
+        <div class="card-header text-white bg-dark">
             <b>انشاء معلومات جديدة للسنة الدراسية</b>
         </div>
         <div class="card-body">

@@ -2,13 +2,13 @@
 
 @section('content')
 
-<div class="card">
-    <div class="card-header">
+<div class="card border-dark">
+    <div class="card-header text-white bg-dark">
         <b>اعدادات السنين الدراسية</b>
     </div>
     <div class="card-body">
      <table class="table table-hover text-right">
-        <thead>
+        <thead class="thead-light">
         <tr>
             <th class="text-right">
                السنة الدراسية
@@ -46,7 +46,7 @@
             @else
                 <tr><td colspan="3" class="text-center">لا توجد اعدادات حاليا</td></tr>
         @endif
-        <td colspan="3"> <a href="{{route('setting.show',['سنة'])}}" class="btn btn-success btn-block" >اضافة سنة دراسية جديدة </a> </td>
+        <tr><td colspan="3"> <a href="{{route('setting.show',['سنة'])}}" class="btn btn-success btn-block" >اضافة سنة دراسية جديدة </a> </td></tr>
         </tbody>
     </table>  
     </div>
@@ -54,13 +54,13 @@
 
 <br>
 
-<div class="card">
-    <div class="card-header">
+<div class="card border-dark">
+    <div class="card-header text-white bg-dark">
         <b>اعدادات انوع الدراسة</b>
     </div>
     <div class="card-body">
      <table class="table table-hover text-right">
-        <thead>
+        <thead class="thead-light">
         <tr>
             <th class="text-right">
                نوع الدراسة
@@ -98,7 +98,7 @@
             @else
                 <tr><td colspan="3" class="text-center">لا توجد اعدادات حاليا</td></tr>
         @endif
-        <td colspan="3"> <a href="{{route('setting.show',['دراسة'])}}" class="btn btn-success btn-block" >اضافة نوع دراسة جديدة </a> </td>
+        <tr><td colspan="3"> <a href="{{route('setting.show',['دراسة'])}}" class="btn btn-success btn-block" >اضافة نوع دراسة جديدة </a> </td></tr>
         </tbody>
     </table>  
     </div>
@@ -106,13 +106,13 @@
 
 <br>
 
-<div class="card">
-    <div class="card-header">
+<div class="card border-dark">
+    <div class="card-header text-white bg-dark">
         <b>اعدادات المراحل الدراسية</b>
     </div>
     <div class="card-body">
      <table class="table table-hover text-right">
-        <thead>
+        <thead class="thead-light">
         <tr>
             <th class="text-right">
                المرحلة الدراسية
@@ -158,13 +158,13 @@
 
 <br>
 
-<div class="card">
-    <div class="card-header">
+<div class="card border-dark">
+    <div class="card-header text-white bg-dark">
         <b>اعدادات نوع التخصص</b>
     </div>
     <div class="card-body">
      <table class="table table-hover text-right">
-        <thead>
+        <thead class="thead-light">
         <tr>
             <th class="text-right">
                نوع التخصص
@@ -211,13 +211,13 @@
 
 <br>
 
-<div class="card">
-    <div class="card-header">
+<div class="card border-dark">
+    <div class="card-header text-white bg-dark">
         <b>اعدادات نوع المواد</b>
     </div>
     <div class="card-body">
      <table class="table table-hover text-right">
-        <thead>
+        <thead class="thead-light">
         <tr>
             <th class="text-right">
                نوع المادة
@@ -264,13 +264,13 @@
 
 <br>
 
-<div class="card">
-    <div class="card-header">
+<div class="card border-dark">
+    <div class="card-header text-white bg-dark">
         <b>اعدادات الساعات الدراسية</b>
     </div>
     <div class="card-body">
      <table class="table table-hover text-right">
-        <thead>
+        <thead class="thead-light">
         <tr>
             <th class="text-right">
                عدد الساعات
@@ -317,13 +317,13 @@
 
 <br>
 
-<div class="card">
-    <div class="card-header">
+<div class="card border-dark">
+    <div class="card-header text-white bg-dark">
         <b>اعدادات نوع الاجازة</b>
     </div>
     <div class="card-body">
      <table class="table table-hover text-right">
-        <thead>
+        <thead class="thead-light">
         <tr>
             <th class="text-right">
                نوع الاجازة

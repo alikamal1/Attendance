@@ -2,8 +2,8 @@
 
 @section('content')
 
-    <div class="card">
-        <div class="card-header">
+    <div class="card border-dark">
+        <div class="card-header text-white bg-dark">
             <b>تعديل السنة الدراسية: {{$setting->name}}</b>
         </div>
         <div class="card-body">
@@ -17,7 +17,7 @@
             </div>
 
             <div class="form-group">
-                <input hidden type="text" name="name" class="form-control" value="السنة">
+                <input hidden type="text" name="name" class="form-control" value="{{$setting->name}}">
             </div>
                     <button class="btn btn-success btn-block" type="submit">حفظ التغيرات</button>
         </form> 

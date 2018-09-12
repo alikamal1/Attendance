@@ -18,7 +18,7 @@ class CreateSubjectsTable extends Migration
             $table->string('name');
             $table->integer('level_id')->unsigned();
             $table->integer('hours');
-            $table->boolean('subject_type');
+            $table->string('subject_type');
             $table->timestamps();
         });
 

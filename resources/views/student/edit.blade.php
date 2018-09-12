@@ -2,8 +2,8 @@
 
 @section('content')
 
-    <div class="card">
-        <div class="card-header">
+    <div class="card border-dark">
+        <div class="card-header text-white bg-dark">
             <b>تعديل معلومات الطالب</b>
         </div>
         <div class="card-body">

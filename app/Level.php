@@ -9,7 +9,7 @@ class Level extends Model
 
     protected $fillable = ['year','study','stage','branch'];
 
-    public function Students()
+    public function students()
     {
         return $this->hasMany('App\Student');
     }

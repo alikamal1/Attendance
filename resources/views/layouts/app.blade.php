@@ -122,8 +122,8 @@
             </div>  
 
             <div class="col-md-3">
-            <div class="card ">
-            <div class="card-header"><b> القائمة الرئيسية </b></div>   
+            <div class="card border-dark">
+            <div class="card-header text-white bg-dark"><b> القائمة الرئيسية </b></div>   
             <div class="card-body">
                 <aside class="menu">
 
@@ -132,29 +132,40 @@
                     </p>
                     <ul class="menu-list">
                     <li class="text-right"><a>ادخال الغياب</a></li>
-                    
+                    <li class="text-right"><a>عرض الغياب</a></li>
                     </ul>
 
                     <p class="menu-label text-right">
                      السنة الدراسية الكاملة 
                     </p>
                     <ul class="menu-list">
-                    <li class="text-right"><a  href="{{route('setting.index')}}">الغيابات</a></li>
-                    <li class="text-right"><a href="{{route('level.index')}}" {{ strpos(url()->current(),'level') > 0  ? "class=is-active":"" }}>السنة الدراسية</a></li>
-                    <li class="text-right"><a href="{{route('setting.index')}}">المواد الدارسية</a></li>
-                    <li class="text-right"><a href="{{route('student.index')}}">الطلاب</a></li>
-                    <li class="text-right"><a href="{{route('setting.index')}}">التدريسين</a></li>
-                    <li class="text-right"><a href="{{route('setting.index')}}" {{ strpos(url()->current(),'setting') > 0  ? "class=is-active":"" }}>الاعدادات </a></li>
+                    
+                    <li class="text-right"><a href="{{route('subject.index')}}" {{ strpos(url()->current(),'subject') > 0  ? "class=is-active":"" }}>المواد الدارسية</a></li>
+                    <li class="text-right"><a href="{{route('student.index')}}" {{ strpos(url()->current(),'student') > 0  ? "class=is-active":"" }}>الطلاب</a></li>
+                    <li class="text-right"><a href="{{route('teacher.index')}}" {{ strpos(url()->current(),'teacher') > 0  ? "class=is-active":"" }}>التدريسين</a></li>
+                    
+                    </ul>
+                    
+                    <p class="menu-label text-right">
+                      الاعدادات
+                    </p>
+                    <ul class="menu-list">
+                    <li class="text-right"><a href="{{route('level.index')}}" {{ strpos(url()->current(),'level') > 0  ? "class=is-active":"" }}>المراحل الدراسية</a></li>
+                    <li class="text-right"><a href="{{route('setting.index')}}" {{ strpos(url()->current(),'setting') > 0  ? "class=is-active":"" }}>اعدادات النظام</a></li>
                     </ul>
                     
                 </aside>
             </div>
             </div>
           
+                </div>
+                
+    </div>
+    </div>
+            
         </main>
     </div>
-    </div>
-
+    
     <script src="{{asset('js/jquery.js')}}"></script>
     <script src="{{asset('js/toastr.min.js')}}"></script>
 

@@ -2,25 +2,22 @@
 
 @section('content')
 
-
-@foreach($years as $year)
-
 <div class="card border-dark">
     <div class="card-header text-white bg-dark">
-        <b>اعدادات السنة الدراسية {{$year->value}}</b>
+        <b>استماء التدريسين </b>
     </div>
     <div class="card-body">
+    <a class="btn btn-primary btn-block" href="{{route('teacher.create')}}">
+        اضافة تدريسي جديد
+    </a>
      <table class="table table-hover text-right">
         <thead class="thead-light">
         <tr>
             <th class="text-right">
-               الدراسة
+               الاسم
             </th>
             <th class="text-right">
-                المرحلة
-            </th>
-            <th class="text-right">
-                الاختصاص
+                المواد
             </th>
             <th class="text-right">
                 تعديل
@@ -28,28 +25,27 @@
             <th class="text-right">
                 حذف
             </th>
+            
         </tr>
         </thead>
         <tbody>
-@foreach($levels as $level)
-@if($level->year == $year->value)      
+@foreach($teachers as $teacher)
             <tr >
             <td class="text-right">
-                {{$level->study}}
+                {{$teacher->username}}
             </td>
             <td class="text-right">
-                {{$level->stage}}
-            </td>    
-            <td class="text-right">
-                {{$level->branch}}
-            </td>
-            <td class="text-right">
-                <a href="{{route('level.edit',['id'=>$level->id])}}">
+                <a href="{{route('teacher.show',['id'=>$teacher->id])}}">
                     <img width="30px" height="30px" src="{{asset('images/edit.png')}}" title="تعديل" alt="تعديل">
                 </a>
             </td>
             <td class="text-right">
-                <form action="{{ route('level.destroy',['id'=>$level->id]) }}" method="POST">
+                <a href="{{route('teacher.edit',['id'=>$teacher->id])}}">
+                    <img width="30px" height="30px" src="{{asset('images/edit.png')}}" title="تعديل" alt="تعديل">
+                </a>
+            </td>
+            <td class="text-right">
+                <form action="{{ route('teacher.destroy',['id'=>$teacher->id]) }}" method="POST">
                     {{csrf_field()}}
                     {{ method_field('DELETE') }}
                     <button class="delete-button" title="حذف" type="submit"> <img width="30px" height="30px" src="{{asset('images/delete.png')}}" title="حذف" alt="حذف">
@@ -57,17 +53,20 @@
                 </form>
             </td>
             </tr>
-@endif
+
 @endforeach
             
         </tbody>
+
     </table> 
-    <a href="{{route('level.show',[$year->value])}}" class="btn btn-success btn-block" type="submit">اضافة المعلومات للسنة الدراسية {{$year->value}}</a> 
+    <a class="btn btn-primary btn-block" href="{{route('teacher.create')}}">
+        اضافة تدريسي جديد
+    </a>
     </div>
 </div>
 
 <br>
-@endforeach
+
 
 @endsection
 
