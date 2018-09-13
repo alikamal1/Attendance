@@ -7,7 +7,7 @@ use App\Student;
 use App\Setting;
 use App\Level;
 use Session;
-
+use Excel;
 class StudentController extends Controller
 {
     /**
@@ -136,5 +136,41 @@ class StudentController extends Controller
     {
         return view('student.create')
         ->with('level',Level::find($id));
+    }
+
+    public function excel($id)
+    {
+        return view('student.excel')
+        ->with('level',Level::find($id));
+    }
+
+    public function import(Request $request,$level_id)
+    {
+
+        $request->validate([
+            'import_file' => 'required'
+        ]);
+ 
+        $path = $request->file('import_file')->getRealPath();
+        $data = Excel::load($path)->get();
+ 
+        if($data->count()){
+            foreach ($data as $value) {
+
+                $arr = ['name' => $value->asm_altalb,'level_id' => $level_id];
+         
+               if(!empty($arr)){
+                Student::create([
+                    'name' => $arr['name'],
+                    'level_id' => $arr['level_id'],
+                ]);
+            }
+            }
+ 
+            
+        }
+         
+        return redirect()->route('student.show',$request->level_id);
+
     }
 }

@@ -20,6 +20,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/setting','SettingController');
+
+Route::post('/student/excel/{level_id}', 'StudentController@import')->name('students.import');;
+Route::get('/student/excel/{id}','StudentController@excel')->name('students.excel');
 Route::get('/student/studentcreate/{id}','StudentController@studentcreate')->name('students.studentcreate');
 Route::resource('/student','StudentController');
 

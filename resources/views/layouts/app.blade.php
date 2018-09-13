@@ -46,8 +46,11 @@
     }
 
     .card-header {
-        flex-direction: row-reverse;
+        display: block !important; 
+        font-weight: bold !important;
+        text-align: center !important;
     }
+    
     .table {
         direction: rtl;
     }
