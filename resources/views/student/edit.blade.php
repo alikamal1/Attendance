@@ -39,7 +39,7 @@
                 </select>
             </div>
             <input type="text" hidden name="year" class="form-control" value="{{$studentLevel->year}}">
-                    <button class="btn btn-success btn-block" type="submit">حفظ اسم الطالب الجديد</button>
+                    <button class="btn btn-success  btn-lg btn-block" type="submit">حفظ اسم الطالب الجديد</button>
         </form> 
         
         </div>

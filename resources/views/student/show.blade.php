@@ -83,15 +83,15 @@
             </td>
             </tr>  
             @endforeach
-            <a href="{{route('students.excel',$level->id)}}" class="btn btn-primary btn-block" type="submit">Excel اضافة قائمة اسماء كاملة ملف </a> 
-            <a href="{{route('students.studentcreate',$level->id)}}" class="btn btn-success btn-block" type="submit">اضافة طالب جديد</a> 
+            <a href="{{route('students.excel',$level->id)}}" class="btn btn-lg btn-primary btn-block" type="submit">Excel اضافة قائمة اسماء كاملة ملف </a> 
+            <a href="{{route('students.studentcreate',$level->id)}}" class="btn btn-lg btn-success btn-block" type="submit">اضافة طالب جديد</a> 
             
 
         </tbody>
     </table> 
     <td colspan="3">
-            <a href="{{route('students.studentcreate',$level->id)}}" class="btn btn-success btn-block" type="submit">اضافة طالب جديد</a> </td>
-            <a href="{{route('students.excel',$level->id)}}" class="btn btn-primary btn-block" type="submit">Excel اضافة قائمة اسماء كاملة ملف </a> 
+            <a href="{{route('students.studentcreate',$level->id)}}" class="btn  btn-lg btn-success btn-block" type="submit">اضافة طالب جديد</a> </td>
+            <a href="{{route('students.excel',$level->id)}}" class="btn btn-lg btn-primary btn-block" type="submit">Excel اضافة قائمة اسماء كاملة ملف </a> 
     </div>
 </div>
 

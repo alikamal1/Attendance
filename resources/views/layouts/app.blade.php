@@ -140,7 +140,7 @@
                     </p>
                     <hr style="margin: 0">
                     <ul class="menu-list">
-                    <li class="text-right"><a href="{{route('index')}}">الصفحة الرئيسية<img src="{{asset('images/home.png')}}" width="20px"></a></li>
+                    <li class="text-right"><a href="{{route('index')}}">الصفحة الرئيسية<img src="{{asset('images/home.png')}}" width="30px"></a></li>
                     </ul>
                     
                     <hr style="margin: 0">
@@ -149,8 +149,8 @@
                     </p>
                     <hr style="margin: 0">
                     <ul class="menu-list">
-                    <li class="text-right"><a>ادخال الغياب  <img src="{{asset('images/absent.png')}}" width="20px"></a></li>
-                    <li class="text-right"><a>عرض الغياب  <img src="{{asset('images/year.png')}}" width="20px"></a></li>
+                    <li class="text-right"><a>ادخال الغياب  <img src="{{asset('images/absent.png')}}" width="30px"></a></li>
+                    <li class="text-right"><a>عرض الغياب  <img src="{{asset('images/year.png')}}" width="30px"></a></li>
                     </ul>
 
                     <hr style="margin: 0">
@@ -161,9 +161,8 @@
 
                     <ul class="menu-list">
                     
-                    <li class="text-right"><a href="{{route('subject.index')}}" {{ strpos(url()->current(),'subject') > 0  ? "class=is-active":"" }}>المواد الدارسية  <img src="{{asset('images/setting.png')}}" width="20px"></a></li>
-                    <li class="text-right"><a href="{{route('student.index')}}" {{ strpos(url()->current(),'student') > 0  ? "class=is-active":"" }}>الطلاب  <img src="{{asset('images/student.png')}}" width="20px"></a></li>
-                    <li class="text-right"><a href="{{route('teacher.index')}}" {{ strpos(url()->current(),'teacher') > 0  ? "class=is-active":"" }}>التدريسين  <img src="{{asset('images/profile.png')}}" width="20px"></a></li>
+                    <li class="text-right"><a href="{{route('student.index')}}" {{ strpos(url()->current(),'student') > 0  ? "class=is-active":"" }}>الطلاب  <img src="{{asset('images/student.png')}}" width="30px"></a></li>
+                    <li class="text-right"><a href="{{route('teacher.index')}}" {{ strpos(url()->current(),'teacher') > 0  ? "class=is-active":"" }}>التدريسين  <img src="{{asset('images/profile.png')}}" width="30px"></a></li>
                     
                     </ul>
 
@@ -174,8 +173,9 @@
                     <hr style="margin: 0">
 
                     <ul class="menu-list">
-                    <li class="text-right"> <a href="{{route('level.index')}}" {{ strpos(url()->current(),'level') > 0  ? "class=is-active":"" }}>المراحل الدراسية  <img src="{{asset('images/level.png')}}" width="20px"></a></li>
-                    <li class="text-right"><a href="{{route('setting.index')}}" {{ strpos(url()->current(),'setting') > 0  ? "class=is-active":"" }}>اعدادات النظام  <img src="{{asset('images/setting.png')}}" width="20px"></a></li>
+                    <li class="text-right"><a href="{{route('subject.index')}}" {{ strpos(url()->current(),'subject') > 0  ? "class=is-active":"" }}>المواد الدارسية  <img src="{{asset('images/subjects.png')}}" width="30px"></a></li>
+                    <li class="text-right"> <a href="{{route('level.index')}}" {{ strpos(url()->current(),'level') > 0  ? "class=is-active":"" }}>المراحل الدراسية  <img src="{{asset('images/level.png')}}" width="30px"></a></li>
+                    <li class="text-right"><a href="{{route('setting.index')}}" {{ strpos(url()->current(),'setting') > 0  ? "class=is-active":"" }}>اعدادات النظام  <img src="{{asset('images/setting.png')}}" width="30px"></a></li>
                     </ul>
                     
                 </aside>

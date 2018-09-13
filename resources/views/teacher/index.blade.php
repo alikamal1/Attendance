@@ -1,15 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-
+<div class="alert alert-primary text-center" role="alert">
+ المواد: تستخدم لتخصيص المواد الدراسية الخاصة بالتدريسي المعني
+</div>
 <div class="card border-dark">
     <div class="card-header text-white bg-dark">
         <b>اسماء التدريسين </b>
     </div>
     <div class="card-body">
-    <a class="btn btn-primary btn-block" href="{{route('teacher.create')}}">
+    <a class="btn btn-primary btn-block btn-lg" href="{{route('teacher.create')}}">
         اضافة تدريسي جديد
-    </a>
+    </a><hr>
      <table class="table table-hover text-right">
         <thead class="thead-light">
         <tr>
@@ -59,7 +61,7 @@
         </tbody>
 
     </table> 
-    <a class="btn btn-primary btn-block" href="{{route('teacher.create')}}">
+    <a class="btn btn-primary btn-block btn-lg" href="{{route('teacher.create')}}">
         اضافة تدريسي جديد
     </a>
     </div>

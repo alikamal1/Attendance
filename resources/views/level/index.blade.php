@@ -62,7 +62,7 @@
             
         </tbody>
     </table> 
-    <a href="{{route('level.show',[$year->value])}}" class="btn btn-success btn-block" type="submit">اضافة المعلومات للسنة الدراسية {{$year->value}}</a> 
+    <a href="{{route('level.show',[$year->value])}}" class="btn btn-success btn-lg btn-block" type="submit">اضافة المعلومات للسنة الدراسية {{$year->value}}</a> 
     </div>
 </div>
 

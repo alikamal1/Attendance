@@ -85,7 +85,7 @@
         </tbody>
     </table> 
     <td colspan="3">
-            <a href="{{route('subject.subjectcreate',$level->id)}}"  class="btn btn-success btn-block" type="submit">اضافة مادة دراسية جديدة</a> </td>
+            <a href="{{route('subject.subjectcreate',$level->id)}}"  class="btn  btn-lg btn-success btn-block" type="submit">اضافة مادة دراسية جديدة</a> </td>
     </div>
 
 

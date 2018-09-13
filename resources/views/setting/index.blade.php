@@ -46,7 +46,7 @@
             @else
                 <tr><td colspan="3" class="text-center">لا توجد اعدادات حاليا</td></tr>
         @endif
-        <tr><td colspan="3"> <a href="{{route('setting.show',['سنة'])}}" class="btn btn-success btn-block" >اضافة سنة دراسية جديدة </a> </td></tr>
+        <tr><td colspan="3"> <a href="{{route('setting.show',['سنة'])}}" class="btn btn-success btn-lg btn-block" >اضافة سنة دراسية جديدة </a> </td></tr>
         </tbody>
     </table>  
     </div>
@@ -98,7 +98,7 @@
             @else
                 <tr><td colspan="3" class="text-center">لا توجد اعدادات حاليا</td></tr>
         @endif
-        <tr><td colspan="3"> <a href="{{route('setting.show',['دراسة'])}}" class="btn btn-success btn-block" >اضافة نوع دراسة جديدة </a> </td></tr>
+        <tr><td colspan="3"> <a href="{{route('setting.show',['دراسة'])}}" class="btn btn-success btn-lg btn-block" >اضافة نوع دراسة جديدة </a> </td></tr>
         </tbody>
     </table>  
     </div>
@@ -150,7 +150,7 @@
             @else
                 <tr><td colspan="3" class="text-center">لا توجد اعدادات حاليا</td></tr>
         @endif
-        <td colspan="3"> <a href="{{route('setting.show',['مرحلة'])}}" class="btn btn-success btn-block" >اضافة سنة مرحلة جديدة </a> </td>
+        <td colspan="3"> <a href="{{route('setting.show',['مرحلة'])}}" class="btn btn-success btn-lg btn-block" >اضافة سنة مرحلة جديدة </a> </td>
         </tbody>
     </table>  
     </div>
@@ -202,7 +202,7 @@
             @else
                 <tr><td colspan="3" class="text-center">لا توجد اعدادات حاليا</td></tr>
         @endif
-        <td colspan="3"> <a href="{{route('setting.show',['تخصص'])}}" class="btn btn-success btn-block" >اضافة نوع تخصص جديد </a> </td>
+        <td colspan="3"> <a href="{{route('setting.show',['تخصص'])}}" class="btn btn-success btn-lg btn-block" >اضافة نوع تخصص جديد </a> </td>
         </tbody>
     </table>  
     </div>
@@ -255,7 +255,7 @@
             @else
                 <tr><td colspan="3" class="text-center">لا توجد اعدادات حاليا</td></tr>
         @endif
-        <td colspan="3"> <a href="{{route('setting.show',['مادة'])}}" class="btn btn-success btn-block" >اضافة نوع مادة جديد </a> </td>
+        <td colspan="3"> <a href="{{route('setting.show',['مادة'])}}" class="btn btn-success btn-lg btn-block" >اضافة نوع مادة جديد </a> </td>
         </tbody>
     </table>  
     </div>
@@ -308,7 +308,7 @@
             @else
                 <tr><td colspan="3" class="text-center">لا توجد اعدادات حاليا</td></tr>
         @endif
-        <td colspan="3"> <a href="{{route('setting.show',['ساعة'])}}" class="btn btn-success btn-block" >اضافة عدد ساعات جديد </a> </td>
+        <td colspan="3"> <a href="{{route('setting.show',['ساعة'])}}" class="btn btn-success btn-lg btn-block" >اضافة عدد ساعات جديد </a> </td>
         </tbody>
     </table>  
     </div>
@@ -361,7 +361,7 @@
             @else
                 <tr><td colspan="3" class="text-center">لا توجد اعدادات حاليا</td></tr>
         @endif
-        <td colspan="3"> <a href="{{route('setting.show',['اجازة'])}}" class="btn btn-success btn-block" >اضافة نوع اجازة جديد </a> </td>
+        <td colspan="3"> <a href="{{route('setting.show',['اجازة'])}}" class="btn btn-success btn-lg btn-block" >اضافة نوع اجازة جديد </a> </td>
         </tbody>
     </table>  
     </div>

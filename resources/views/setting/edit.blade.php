@@ -19,7 +19,7 @@
             <div class="form-group">
                 <input hidden type="text" name="name" class="form-control" value="{{$setting->name}}">
             </div>
-                    <button class="btn btn-success btn-block" type="submit">حفظ التغيرات</button>
+                    <button class="btn btn-success  btn-lg btn-block" type="submit">حفظ التغيرات</button>
         </form> 
         
         </div>

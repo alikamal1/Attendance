@@ -16,7 +16,7 @@
                 <label for="name" style="float: right;">الاسم</label>
                 <input type="text" name="name" class="form-control" value="">
             </div>
-                    <button class="btn btn-success btn-block" type="submit">حفظ اسم الطالب الجديد</button>
+                    <button class="btn btn-success  btn-lg btn-block" type="submit">حفظ اسم الطالب الجديد</button>
         </form> 
         
         </div>

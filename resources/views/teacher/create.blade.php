@@ -19,7 +19,7 @@
                 <input type="text" name="password" class="form-control" value="">
             </div>
             
-			<button class="btn btn-success btn-block" type="submit">حفظ اسم التدريسي الجديد</button>
+			<button class="btn btn-success  btn-lg btn-block" type="submit">حفظ اسم التدريسي الجديد</button>
         </form> 
         
         </div>

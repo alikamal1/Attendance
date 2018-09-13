@@ -43,7 +43,7 @@
                 </select>
             </div>
 
-            <button class="btn btn-success btn-block" type="submit">اضافة المعلومات للسنة الدراسية</button>
+            <button class="btn btn-success btn-block  btn-lg" type="submit">اضافة المعلومات للسنة الدراسية</button>
         </form> 
         
         </div>

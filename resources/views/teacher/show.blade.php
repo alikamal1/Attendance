@@ -43,7 +43,7 @@
         {{$level->branch}}
     </td>
     <td colspan="2" class="text-right">
-        <a class="btn btn-primary btn-block" href="{{route('teacher.subject_teacher',['teacher_id'=>$teacher->id,'level_id'=>$level->id])}}">
+        <a class="btn btn-primary  btn-lg btn-block" href="{{route('teacher.subject_teacher',['teacher_id'=>$teacher->id,'level_id'=>$level->id])}}">
             عرض قوائم المواد
         </a>
     </td>

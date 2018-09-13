@@ -16,7 +16,7 @@
                 <label for="name" style="float: right;">الاسم</label>
                 <input type="text" name="value" class="form-control" value="">
             </div>
-                    <button class="btn btn-success btn-block" type="submit">اضافة {{$setting_name}} جديدة </button>
+                    <button class="btn  btn-lg btn-success btn-block" type="submit">اضافة {{$setting_name}} جديدة </button>
         </form> 
         
         </div>
