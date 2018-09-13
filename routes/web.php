@@ -26,15 +26,15 @@ Route::get('/student/excel/{id}','StudentController@excel')->name('students.exce
 Route::get('/student/studentcreate/{id}','StudentController@studentcreate')->name('students.studentcreate');
 Route::resource('/student','StudentController');
 
-Route::get('/subject/subjectedit/{id}/{year}','SubjectController@subjectedit')->name('subject.subjectedit');
-Route::get('/subject/destroysubject/{id}/{year}','SubjectController@destroysubject')->name('subject.destroysubject');
+Route::get('/subject/subjectedit/{id}/{level_id}','SubjectController@subjectedit')->name('subject.subjectedit');
+Route::get('/subject/destroysubject/{id}/{level_id}','SubjectController@destroysubject')->name('subject.destroysubject');
 Route::get('/subject/subjectcreate/{id}','SubjectController@subjectcreate')->name('subject.subjectcreate');
-Route::get('/subject/showsubject/{year}', 'subjectController@showsubject')->name('subject.showsubject');
+Route::get('/subject/showsubject/{level_id}', 'subjectController@showsubject')->name('subject.showsubject');
 Route::resource('/subject','SubjectController');
 
-Route::get('/teacher/select/{subject_id}/{teacher_id}/{year}','TeacherController@select')->name('teacher.select');
-Route::get('/teacher/unselect/{subject_id}/{teacher_id}/{year}','TeacherController@unselect')->name('teacher.unselect');
-Route::post('/teacher/subject_teacher/{id}', 'TeacherController@subject_teacher')->name('teacher.subject_teacher');
+Route::get('/teacher/select/{subject_id}/{teacher_id}/{level_id}','TeacherController@select')->name('teacher.select');
+Route::get('/teacher/unselect/{subject_id}/{teacher_id}/{level_id}','TeacherController@unselect')->name('teacher.unselect');
+Route::get('/teacher/subject_teacher/{teacher_id}/{level_id}', 'TeacherController@subject_teacher')->name('teacher.subject_teacher');
 Route::resource('/teacher', 'TeacherController');
 
 

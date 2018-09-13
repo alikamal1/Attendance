@@ -147,8 +147,9 @@ class StudentController extends Controller
     public function import(Request $request,$level_id)
     {
 
+
         $request->validate([
-            'import_file' => 'required'
+            'import_file' => 'required|mimes:xlsx,xls'
         ]);
  
         $path = $request->file('import_file')->getRealPath();

@@ -13,7 +13,7 @@
             <div class="form-group">
                 <input hidden type="text" name="level_id" class="form-control" value="{{$subject->level_id}}">
 
-                <label for="name" style="float: right;">الاسم</label>
+                <label for="name" style="float: right;">اسم المادة</label>
                 <input type="text" name="name" value="{{$subject->name}}" class="form-control" value="">
             </div>
             <div class="form-group">   
@@ -33,7 +33,7 @@
                 </select>
             </div>
             <input type="text" hidden name="year" class="form-control" value="{{$year}}">
-                    <button class="btn btn-success btn-block" type="submit">حفظ اسم الطالب الجديد</button>
+                    <button class="btn btn-success btn-block" type="submit">حفظ اسم المادة الجديد</button>
         </form> 
         
         </div>

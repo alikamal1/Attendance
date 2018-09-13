@@ -17,7 +17,8 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        return view('subject.index')->with('years',Setting::where('name','سنة')->get());
+        $levels = Level::all()->sortByDesc('year')->groupBy('year');
+        return view('subject.index')->with('levels',$levels);
     }
 
     /**
@@ -52,7 +53,7 @@ class SubjectController extends Controller
             'subject_type' => $request->subject_type,
         ]);
         Session::flash('success','تم الحفظ بنجاح');
-        return redirect()->route('subject.showsubject',$request->year);
+        return redirect()->route('subject.showsubject',$request->level_id);
     }
 
     /**
@@ -116,11 +117,11 @@ class SubjectController extends Controller
     {
         
     }
-    public function showsubject($year)
+    public function showsubject($level_id)
     {
 
         return view('subject.show')
-        ->with('levels',Level::where('year',$year)->get());
+        ->with('level',Level::find($level_id));
     }
 
     public function subjectcreate($id)
@@ -139,12 +140,12 @@ class SubjectController extends Controller
         ->with('subject',Subject::find($id))
         ->with('year',$year);
     }
-    public function destroysubject($id,$year)
+    public function destroysubject($id,$level_id)
     {
         Subject::destroy($id);
         Session::flash('success','تم الحذف بنجاح');
 
-        return redirect()->route('subject.showsubject',$year);
+        return redirect()->route('subject.showsubject',$level_id);
     }
         
 }

@@ -63,9 +63,10 @@ class TeacherController extends Controller
      */
     public function show($id)
     {
+        $levels = Level::all()->sortByDesc('year')->groupBy('year');
         return view('teacher.show')
-        ->with('teacher',Teacher::find($id))
-        ->with('years',Setting::where('name','سنة')->get());
+        ->with('teacher',Teacher::find($id)->first())
+        ->with('levels',$levels);
     }
 
     /**
@@ -120,17 +121,17 @@ class TeacherController extends Controller
         return redirect()->route('teacher.index');
     }
 
-    public function subject_teacher(Request $request, $id)
+    public function subject_teacher($teacher_id, $level_id)
     {
         
         return view('teacher.subject_teacher')
-        ->with('teacher',Teacher::find($id)->first())
-        ->with('levels',Level::where('year',$request->year)->get())
-        ->with('s_t',SubjectTeacher::where('teacher_id',$id)->get());
+        ->with('teacher',Teacher::find($teacher_id))
+        ->with('level',Level::find($level_id))
+        ->with('s_t',SubjectTeacher::where('teacher_id',$teacher_id)->get());
     
     }
 
-    public function select($subject_id,$teacher_id,$year)
+    public function select($subject_id,$teacher_id,$level_id)
     {
         SubjectTeacher::create([
             'subject_id' => $subject_id,
@@ -140,13 +141,13 @@ class TeacherController extends Controller
         Session::flash('success','تم الحفظ بنجاح');
 
         return view('teacher.subject_teacher')
-        ->with('teacher',Teacher::find($teacher_id)->first())
-        ->with('levels',Level::where('year',$year)->get())
-        ->with('s_t',SubjectTeacher::where('teacher_id',$teacher_id)->get());;
+        ->with('teacher',Teacher::find($teacher_id))
+        ->with('level',Level::find($level_id))
+        ->with('s_t',SubjectTeacher::where('teacher_id',$teacher_id)->get());
 
     }
 
-    public function unselect($subject_id,$teacher_id,$year)
+    public function unselect($subject_id,$teacher_id,$level_id)
     {
         $id = SubjectTeacher::where('subject_id',$subject_id)->where('teacher_id',$teacher_id)->first()->id;
         
@@ -155,8 +156,8 @@ class TeacherController extends Controller
         Session::flash('success','تم الحذف بنجاح');
 
         return view('teacher.subject_teacher')
-        ->with('teacher',Teacher::find($teacher_id)->first())
-        ->with('levels',Level::where('year',$year)->get())
-        ->with('s_t',SubjectTeacher::where('teacher_id',$teacher_id)->get());;
+        ->with('teacher',Teacher::find($teacher_id))
+        ->with('level',Level::find($level_id))
+        ->with('s_t',SubjectTeacher::where('teacher_id',$teacher_id)->get());
     }
 }

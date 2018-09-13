@@ -3,10 +3,8 @@
 @section('content')
 <div class="card border-dark">
     <div class="card-header text-white bg-dark">
-        <b>قوائم المواد الدراسية للسنة الدراسية {{$levels->first()->year}}</b>
+        <b>قوائم المواد الدراسية للسنة الدراسية {{$level->year}}</b>
     </div>
-@foreach($levels as $level)
-
 
     <div class="card-body">
              <table class="table table-hover text-center">
@@ -23,6 +21,7 @@
             </th>
         </tr>
             <tr >
+
             <td class="text-center">
                 {{$level->study}}
             </td>
@@ -69,13 +68,13 @@
                 {{$subject->hours}}
             </td>
             <td class="text-right">
-                <a href="{{route('subject.subjectedit',['id'=>$subject->id,'year'=>$level->year])}}">
+                <a href="{{route('subject.subjectedit',['id'=>$subject->id,'level_id'=>$level->id])}}">
                     <img width="30px" height="30px" src="{{asset('images/edit.png')}}" title="تعديل" alt="تعديل">
                 </a>
             </td>
-            <td class="text-right">
+            <td class="text-right" >
 
-                    <a href="{{route('subject.destroysubject',['id'=>$subject->id,'year'=>$levels->first()->year])}}" class="delete-button" title="حذف" > <img width="30px" height="30px" src="{{asset('images/delete.png')}}" title="حذف" alt="حذف">
+                    <a href="{{route('subject.destroysubject',['id'=>$subject->id,'level_id'=>$level->id])}}" class="delete-button" title="حذف" > <img width="30px" height="30px" src="{{asset('images/delete.png')}}" title="حذف" alt="حذف">
                     </a>
 
             </td>
@@ -86,11 +85,11 @@
         </tbody>
     </table> 
     <td colspan="3">
-            <a href="{{route('subject.subjectcreate',$level->id)}}" class="btn btn-success btn-block" type="submit">اضافة مادة دراسية جديدة</a> </td>
+            <a href="{{route('subject.subjectcreate',$level->id)}}"  class="btn btn-success btn-block" type="submit">اضافة مادة دراسية جديدة</a> </td>
     </div>
 
-<hr style="background: black;">
-@endforeach
+
 </div>
+
 @endsection
 

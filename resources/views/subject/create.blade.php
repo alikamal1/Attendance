@@ -13,7 +13,7 @@
             <div class="form-group">
                 <input hidden type="text" name="level_id" class="form-control" value="{{$level->id}}">
 
-                <label for="name" style="float: right;">الاسم</label>
+                <label for="name" style="float: right;">اسم المادة</label>
                 <input type="text" name="name" class="form-control" value="">
             </div>
             <div class="form-group">   

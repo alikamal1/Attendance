@@ -5,8 +5,6 @@
     <div class="card-header text-white bg-dark">
         <b>{{$teacher->username}} تخصيص المواد الدراسية للتدريسي </b>
     </div>
-@foreach($levels as $level)
-
 
     <div class="card-body">
              <table class="table table-hover text-center">
@@ -69,9 +67,9 @@
             <td colspan="2" class="text-right">
 
                 @if(is_null($s_t->where('subject_id',$subject->id)->first() ))
-                <a class="btn btn-success btn-block" href="{{route('teacher.select',['subject_id'=>$subject->id,'teacher_id'=>$teacher->id,'year'=>$level->year])}}" title="">اختيار</a>
+                <a class="btn btn-success btn-block" href="{{route('teacher.select',['subject_id'=>$subject->id,'teacher_id'=>$teacher->id,'level_id'=>$level->id])}}" title="">اختيار</a>
                 @else
-                <a class="btn btn-danger btn-block" href="{{route('teacher.unselect',['subject_id'=>$subject->id,'teacher_id'=>$teacher->id,'year'=>$level->year])}}" title="">الغاء</a>
+                <a class="btn btn-danger btn-block" href="{{route('teacher.unselect',['subject_id'=>$subject->id,'teacher_id'=>$teacher->id,'level_id'=>$level->id])}}" title="">الغاء</a>
                 @endif
             </td>
             </tr>  
@@ -83,8 +81,8 @@
 
     </div>
 
-<hr style="background: black;">
-@endforeach
+
 </div>
+
 @endsection
 
