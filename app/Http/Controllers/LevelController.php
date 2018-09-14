@@ -19,7 +19,7 @@ class LevelController extends Controller
         return view('level.index')
         ->with('levels',Level::all())
         ->with('settings',Setting::all())
-        ->with('years',Setting::where('name','سنة')->get());
+        ->with('years',Setting::where('name','سنة')->orderByDesc('created_at')->get());
     }
 
     /**

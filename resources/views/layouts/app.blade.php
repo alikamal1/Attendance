@@ -58,6 +58,19 @@
         letter-spacing: 0; 
         text-align: center !important;
     }
+
+    .dropdown-toggle {
+    padding-right: 5px !important;
+}
+
+.bootstrap-select.btn-group .dropdown-toggle .filter-option {
+   text-align: right !important;
+}
+
+.bootstrap-select.btn-group .dropdown-toggle .caret {
+    left: 12px !important;
+    right: unset !important;;
+}
    
 </style>
 </head>
@@ -140,7 +153,7 @@
                     </p>
                     <hr style="margin: 0">
                     <ul class="menu-list">
-                    <li class="text-right"><a href="{{route('index')}}">الصفحة الرئيسية<img src="{{asset('images/home.png')}}" width="30px"></a></li>
+                    <li class="text-right"><a href="{{route('index')}}">الصفحة الرئيسية  <img src="{{asset('images/home.png')}}" width="30px"></a></li>
                     </ul>
                     
                     <hr style="margin: 0">

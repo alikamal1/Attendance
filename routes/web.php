@@ -37,7 +37,20 @@ Route::get('/teacher/unselect/{subject_id}/{teacher_id}/{level_id}','TeacherCont
 Route::get('/teacher/subject_teacher/{teacher_id}/{level_id}', 'TeacherController@subject_teacher')->name('teacher.subject_teacher');
 Route::resource('/teacher', 'TeacherController');
 
+Route::get('/copy/getstudy/{year}','CopyDataController@getstudy')->name('copy.getstudy');
+Route::get('/copy/','CopyDataController@index')->name('copy.index');
 
 Route::resource('/level','LevelController');
+
+Route::get('/ajax/getyear','AjaxGetController@getyear');
+Route::get('/ajax/getstudy/{year}','AjaxGetController@getstudy');
+Route::get('/ajax/getstage/{year}/{study}','AjaxGetController@getstage');
+Route::get('/ajax/getbranch/{year}/{study}/{stage}','AjaxGetController@getbranch');
+Route::get('/ajax/getsubject/{year}/{study}/{stage}/{subject}','AjaxGetController@getsubject');
+
+
+
+Route::get('/attendance','AttendanceController@index');
+
 
 

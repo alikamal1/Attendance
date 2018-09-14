@@ -17,7 +17,7 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        $levels = Level::all()->sortByDesc('year')->groupBy('year');
+        $levels = Level::all()->sortByDesc('created_at')->groupBy('year');
         return view('subject.index')->with('levels',$levels);
     }
 
