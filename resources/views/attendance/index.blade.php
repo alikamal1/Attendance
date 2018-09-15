@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
       <script>
         window.onload  = function(){
         $("#yeardiv").show();
@@ -8,8 +10,10 @@
         $("#stagediv").hide();
         $("#branchdiv").hide();
         $("#subjectdiv").hide();
+        $("#datediv").hide();
         $("#submitdiv").hide();
 
+       
         $.ajax({
                type:'GET',
                url:'/ajax/getyear',
@@ -94,6 +98,11 @@
                     });             
          }
 
+        function getdate()
+        {
+            $("#datediv").show();
+        }
+
         function getsubmit()
         {
             $("#submitdiv").show();
@@ -145,18 +154,25 @@
     <div class="form-row text-right" style="direction: rtl;" >
         <div class="form-group col-md-6"  id="subjectdiv">   
             <label style="float: right;">المادة</label>
-            <select class="form-control" id="subject"  name="subject" onchange="getsubmit()">
+            <select class="form-control" id="subject"  name="subject" onchange="getdate()">
                 
             </select>
         </div>
-    <div class="form-group col-md-6"  id="submitdiv">   
-    <br>
-    <button type="submit" class="btn btn-success btn-block btn-lg"> ادخال الغيابات</button>
+        <div class="form-group col-md-6"  id="datediv" >   
+            <label style="float: right;">التاريخ</label>
+            <input type="text" class="form-group" data-provide="datepicker" style="text-align: center; padding: 5px; margin-top:32px;" onchange="getsubmit()">
+        </div>
     </div>
+    <div class="form-group" id="submitdiv">
+        <button type="submit" class="btn btn-success btn-block btn-lg"> ادخال الغيابات</button>
     </div>
     </form>
     </div>
 </div>
+
+    
+   
+
 
 
 @endsection

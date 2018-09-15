@@ -50,7 +50,7 @@ Route::get('/ajax/getsubject/{year}/{study}/{stage}/{subject}','AjaxGetControlle
 
 
 
-Route::get('/attendance','AttendanceController@index');
+Route::get('/attendance','AttendanceController@index')->name('attendance.index');
 
 
 

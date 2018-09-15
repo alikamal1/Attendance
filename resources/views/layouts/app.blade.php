@@ -10,13 +10,19 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{asset('js/toastr.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap-datepicker.js')}}"></script>
+    <script src="{{asset('js/bootstrap-datepicker.ar.min.js')}}"></script>
+    
     
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bulma.css') }}" rel="stylesheet">
     <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap-datepicker.css') }}" rel="stylesheet">
+
+
 
 
     <style type="text/css">
@@ -162,7 +168,7 @@
                     </p>
                     <hr style="margin: 0">
                     <ul class="menu-list">
-                    <li class="text-right"><a>ادخال الغياب  <img src="{{asset('images/absent.png')}}" width="30px"></a></li>
+                    <li class="text-right"><a href="{{route('attendance.index')}}>ادخال الغياب  <img src="{{asset('images/absent.png')}}" width="30px"></a></li>
                     <li class="text-right"><a>عرض الغياب  <img src="{{asset('images/year.png')}}" width="30px"></a></li>
                     </ul>
 
@@ -203,9 +209,6 @@
         </main>
     </div>
     
-    <script src="{{asset('js/jquery.js')}}"></script>
-    <script src="{{asset('js/toastr.min.js')}}"></script>
-
     <script>
 
         @if(Session::has('success'))
@@ -215,5 +218,7 @@
         toastr.success('{{Session::get('success')}}')    
         @endif
     </script>
+
+</script>
 </body>
 </html>
