@@ -46,8 +46,10 @@ Route::get('/ajax/getyear','AjaxGetController@getyear');
 Route::get('/ajax/getstudy/{year}','AjaxGetController@getstudy');
 Route::get('/ajax/getstage/{year}/{study}','AjaxGetController@getstage');
 Route::get('/ajax/getbranch/{year}/{study}/{stage}','AjaxGetController@getbranch');
-Route::get('/ajax/getsubject/{year}/{study}/{stage}/{subject}','AjaxGetController@getsubject');
+Route::get('/ajax/getsubject/{year}/{study}/{stage}/{branch}','AjaxGetController@getsubject');
 Route::get('/ajax/getattendancelist/{subject_id}','AjaxGetController@getattendancelist');
+Route::get('/ajax/getlevelid/{year}/{study}/{stage}/{branch}','AjaxGetController@getlevelid');
+
 
 
 
@@ -60,6 +62,10 @@ Route::get('/attendance/edit','AttendanceController@edit')->name('attendance.edi
 Route::get('/attendance/edit/{subject_id}/{date}','AttendanceController@edit')->name('attendance.edit');
 Route::get('/attendance/update','AttendanceController@update')->name('attendance.update');
 Route::get('/attendance/delete/{subject_id}/{date}','AttendanceController@delete')->name('attendance.delete');
+
+Route::get('/report','ReportController@index')->name('report.index');
+Route::get('/report/show','ReportController@show')->name('report.show');
+
 
 
 

@@ -46,7 +46,14 @@ class AjaxGetController extends Controller
     {
         $level = Subject::find($subject_id)->level()->first();
         $subject = Subject::find($subject_id)->name;
-        $dates = Attendance::where('subject_id',$subject_id)->get()->unique('date')->toarray();;
+        $dates = Attendance::where('subject_id',$subject_id)->get()->unique('date')->toarray();
         return response()->json(array('data'=> $dates,'level' => $level,'subject' => $subject), 200);
     }
+
+    public function getlevelid($year,$study,$stage,$branch)
+    {
+        $level_id = Level::where('year',$year)->where('study',$study)->where('stage',$stage)->where('branch',$branch)->first()->id;
+        return response()->json(array('level_id'=> $level_id), 200);
+    }
+
 }

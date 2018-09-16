@@ -39,13 +39,10 @@
                 الاختصاص
             </th>
              <th class="text-center">
-                المادة
+                من فترة
             </th>
             <th class="text-center">
-                عدد الساعات
-            </th>
-            <th class="text-center">
-                التاريخ
+                لغاية
             </th>
 
         </tr>
@@ -61,13 +58,10 @@
                 {{$level->branch}}
             </td>
             <td class="text-center">
-                {{$subject}}
+                {{$datefrom}}
             </td>
             <td class="text-center">
-                {{$hours}}
-            </td>
-            <td class="text-center">
-                {{$date}}
+                {{$dateto}}
             </td>
 
                 
@@ -78,34 +72,32 @@
         <thead class="thead-light">
         <tr>
             <th class="text-center">
-               التسلسل
-            </th>
-            <th class="text-center">
                اسم الطالب
             </th>
-            <th class="text-center">
-                الحالة
+            @foreach($subjects as $subject)
+            <th class="text-center" >
+             {{--    writing-mode: vertical-rl;
+text-orientation: upright; --}}
+                {{$subject->name}}
             </th>
+            @endforeach
 
         </tr>
         </thead>
         <tbody>
-            <form action="{{route('attendance.store')}}" method="get">
+            <form action="{{route('attendance.update')}}" method="get">
             
-            @foreach($students as  $key => $student)
+            @foreach($students as $student)
             <tr >
-            <td class="text-center">
-                <b>{{$key+1}}</b>
-            </td>
-            <td class="text-center">
+            <td class="text-center" >
                 {{$student->name}}
             </td>
-            <td class="text-center">
-                <input type="checkbox" id="{{$student->id}}" name="{{$student->id}}" value="1" data-size="large" checked data-toggle="toggle" data-on="حــاضــر" data-off="غــائــب" data-onstyle="success" data-offstyle="danger" onchange="changeAttendanceState({{$student->id}})">
-
-                <input hidden type="text"  id="student_id={{$student->id}}" name="{{$student->id}}" value="1">
-
+            {{-- subject->subject_pass()->first()->hours_count --}}
+            @foreach($subjects as $subject)
+            <td class="text-center" >
+                {{ ($subject->attendances()->whereBetween('date',[$datefrom,$dateto])->where('student_id',$student->id)->where('status','0')->count()) *  $subject->hours}}
             </td>
+            @endforeach
 
             </tr>  
             @endforeach
@@ -113,9 +105,8 @@
             <td colspan="3">
             <button class="btn  btn-lg btn-primary btn-block" type="submit">حــفــــظ قائمـــة الغــيـــاب</button> </td>
     </div>
-        <input hidden type="text"  id="subject_id" name="subject_id" value="{{$subject_id}}">
-        <input hidden type="text"  id="date" name="date" value="{{$date}}">
-        <input hidden type="text"  id="hours" name="hours" value="{{$hours}}">
+        {{-- <input hidden type="text"  id="subject_id" name="subject_id" value="{{$subject_id}}"> --}}
+        {{-- <input hidden type="text"  id="date" name="date" value="{{$date}}"> --}}
         </form>
         </tbody>
     </table> 

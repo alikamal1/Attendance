@@ -8,6 +8,7 @@ use App\Level;
 use App\Subject;
 use App\Student; 
 use App\Attendance;
+use App\SubjectPass;
 use Session;
 
 class AttendanceController extends Controller
@@ -33,6 +34,7 @@ class AttendanceController extends Controller
     	$subject_id = $request->subject;
 
     	$subject = Subject::find($subject_id)->name;
+        $hours = Subject::find($subject_id)->hours;
     	$level_id = Subject::find($subject_id)->level_id;
     	$level = Level::find($level_id);
     	$students = Student::where('level_id',$level_id)->get();
@@ -41,6 +43,7 @@ class AttendanceController extends Controller
     									->with('level',$level)
     									->with('date',$date)
     									->with('subject',$subject)
+                                        ->with('hours',$hours)
     									->with('subject_id',$subject_id);
 
     }
@@ -48,12 +51,13 @@ class AttendanceController extends Controller
     public function store(Request $request)
     {	
     	$date = $request->date;
+        $hours = $request->hours;
     	$subject_id = $request->subject_id;
     	$subject_teacher_id = 0;
     	$allow = 0;
 
     	$requeestData = $request->request;
-    	$requeestData = $request->except(['date','subject_id']);
+    	$requeestData = $request->except(['date','subject_id','hours']);
 
     	foreach($requeestData as  $student_id => $status)
     	{
@@ -67,6 +71,20 @@ class AttendanceController extends Controller
     			'allow' => $allow,
     		]);
     	}
+
+        $subject_pass = SubjectPass::where('subject_id',$subject_id)->first();
+        if ($subject_pass)
+        {
+            $subject_pass->hours_count = $subject_pass->hours_count + $hours;
+            $subject_pass->save();
+        } else {
+            SubjectPass::create([
+            'subject_id' => $subject_id,
+            'hours_count' => $hours
+            ]);
+        }
+
+        
 
         Session::flash('success','تم تسجيل قائمة الحضور بنجاح');
         return redirect()->route('attendance.index');
@@ -127,6 +145,11 @@ class AttendanceController extends Controller
     	foreach ($attendances as $attendance) {
     		$attendance->delete();
     	}
+
+        $hours = Subject::find($subject_id)->hours;
+        $subject_pass = SubjectPass::where('subject_id',$subject_id)->first();
+        $subject_pass->hours_count = $subject_pass->hours_count - $hours;
+        $subject_pass->save();
 
     	Session::flash('success','تم حذف قائمة الغياب بنجاح');
         return redirect()->route('attendance.show');
