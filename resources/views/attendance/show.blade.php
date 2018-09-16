@@ -14,6 +14,8 @@
         $("#subjectdiv").hide();
         $("#datediv").hide();
         $("#submitdiv").hide();
+        $("#showresult").hide();
+        
 
         $.ajax({
                type:'GET',
@@ -49,7 +51,7 @@
                             $("#subjectdiv").hide();
                             $("#datediv").hide();
                             $("#submitdiv").hide();
-                            $("#showresult").hide()
+                            $("#showresult").hide();
 
                             $("#study").empty();
                             $("#study").append('<option>اختر نوع الدراسة</option>');
@@ -72,7 +74,7 @@
                             $("#subjectdiv").hide();
                             $("#datediv").hide();
                             $("#submitdiv").hide();
-                            $("#showresult").hide()
+                            $("#showresult").hide();
 
                             $("#stage").empty();
                             $("#stage").append('<option> اختر المرحلة الدراسية </option>');
@@ -95,7 +97,7 @@
                             $("#subjectdiv").hide();
                             $("#datediv").hide();
                             $("#submitdiv").hide();
-                            $("#showresult").hide()
+                            $("#showresult").hide();
 
                             $("#branch").empty();
                             $("#branch").append('<option>اختر التخصص الدراسي </option>');
@@ -118,7 +120,7 @@
                             $("#subjectdiv").show();
                             $("#datediv").hide();
                             $("#submitdiv").hide();
-                            $("#showresult").hide()
+                            $("#showresult").hide();
                             
                             $("#subject").empty();
                             $("#subject").append('<option>اختر المادة الدراسية</option>');
@@ -129,24 +131,54 @@
                     });             
          }
 
-        function getdate()
-        {
-            $("#datediv").show();
-        }
-
         function getsubmit()
         {
             $("#submitdiv").show();
         }
+
+        function getattendancelist()
+        {
+            document.getElementById("studytd").innerHTML = 'a';
+            subject_id = $("#subject").find(":selected").val();
+            $.ajax({
+               type:'GET',
+               url:'/ajax/getattendancelist/'+subject_id,
+               success: function(response){
+                
+                        document.getElementById("studytd").innerHTML = response.level.study;
+                        document.getElementById("stagetd").innerHTML = response.level.stage;
+                        document.getElementById("branchtd").innerHTML = response.level.branch;
+                        document.getElementById("subjecttd").innerHTML = response.subject;
+
+                        $('#dates_table').empty();
+                        var trHTML = '';
+                        $.each(response.data, function (i, data) {
+                            //bad urls
+                        trHTML += '<tr ><td class="text-center"><button type="button" class="btn btn-outline-primary btn-block btn-lg">' + data.date + '</button> </td><td class="text-center"><a href="edit/'+data.subject_id+'/'+data.date + '"> <img width="30px" height="30px" src="{{asset('images/edit.png')}}" title="تعديل" alt="تعديل"></a></td><td class="text-center"> <a href="delete/'+data.subject_id+'/'+data.date + '" class="delete-button" title="حذف" > <img width="30px" height="30px" src="{{asset('images/delete.png')}}" title="حذف" alt="حذف"></a></td></tr>';
+                        });
+                        $('#dates_table').append(trHTML);
+                        }
+
+                       
+
+                    });
+             $("#showresult").show();
+        }
+
+
+
+
+        
+
+        
 
 
  
       </script>
 
 <div class="card border-dark">
-    <div class="card-header text-white bg-dark"><b>ادخال الغيابات</b></div>
+    <div class="card-header text-white bg-dark"><b>قوائم الغيابات</b></div>
     <div class="card-body">
-    <form action="{{route('attendance.record')}}" method="GET">
         
     <div class="form-row text-right" style="direction: rtl;" >
         <div class="form-group col-md-6" id="yeardiv">   
@@ -185,20 +217,89 @@
     <div class="form-row text-right" style="direction: rtl;" >
         <div class="form-group col-md-6"  id="subjectdiv">   
             <label style="float: right;">المادة</label>
-            <select class="form-control" id="subject"  name="subject" onchange="getdate()">
+            <select class="form-control" id="subject"  name="subject" onchange="getsubmit()">
                 
             </select>
         </div>
-        <div class="form-group col-md-6"  id="datediv" >   
-            <label style="float: right;">التاريخ</label>
-            <input type="text" id="date"  name="date" class="form-group" data-provide="datepicker" style="text-align: center; padding: 5px; margin-top:32px;" onchange="getsubmit()">
+        <div class="form-group col-md-6"  id="submitdiv" >  <br> 
+            <button type="button" class="btn btn-primary btn-block btn-lg" onclick="getattendancelist()"> عرض الغيابات </button>
         </div>
     </div>
-    <div class="form-group" id="submitdiv">
-        <button type="submit" class="btn btn-success btn-block btn-lg"> ادخال الغيابات</button>
+
     </div>
-    </form>
+</div>
+
+
+<hr>
+
+
+<div class="card border-dark" id="showresult">
+    <div class="card-header text-white bg-dark">
+        قوائم الغياب    
     </div>
+
+    <div class="card-body">
+             <table class="table table-hover text-center">
+
+         <tr>
+            <th class="text-center">
+               الدراسة
+            </th>
+            <th class="text-center">
+                المرحلة
+            </th>
+            <th class="text-center">
+                الاختصاص
+            </th>
+             <th class="text-center">
+                المادة
+            </th>
+
+
+        </tr>
+            <tr >
+
+            <td class="text-center" id="studytd">
+
+            </td>
+            <td class="text-center" id="stagetd">
+
+            </td>    
+            <td class="text-center" id="branchtd">
+
+            </td>
+            <td class="text-center" id="subjecttd">
+
+            </td>
+
+
+                
+            </tr>  
+        </table>
+     <table class="table table-hover text-center" id="dates_table">
+
+        <thead class="thead-light">
+        <tr>
+            <th class="text-center">
+               التاريخ
+            </th>
+            <th class="text-center">
+               تعديل
+            </th>
+            <th class="text-center">
+                خذف
+            </th>
+
+        </tr>
+        </thead>
+        <tbody>
+             
+    </div>
+
+        </tbody>
+    </table> 
+
+</div>
 </div>
 
 

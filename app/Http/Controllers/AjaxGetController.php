@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Level;
 use App\Setting;
-use App\Subejct;
+use App\Subject;
+use App\Attendance;
 
 class AjaxGetController extends Controller
 {
@@ -39,5 +40,13 @@ class AjaxGetController extends Controller
     	$level_id = Level::where('year',$year)->where('study',$study)->where('stage',$stage)->where('branch',$branch)->first();
     	$subject = Level::find($level_id)->first()->subjects()->get()->toarray();
     	return response()->json(array('data'=> $subject), 200);
+    }
+
+    public function getattendancelist($subject_id)
+    {
+        $level = Subject::find($subject_id)->level()->first();
+        $subject = Subject::find($subject_id)->name;
+        $dates = Attendance::where('subject_id',$subject_id)->get()->unique('date')->toarray();;
+        return response()->json(array('data'=> $dates,'level' => $level,'subject' => $subject), 200);
     }
 }

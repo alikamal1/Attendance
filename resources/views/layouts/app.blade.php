@@ -14,14 +14,14 @@
     <script src="{{asset('js/toastr.min.js')}}"></script>
     <script src="{{asset('js/bootstrap-datepicker.js')}}"></script>
     <script src="{{asset('js/bootstrap-datepicker.ar.min.js')}}"></script>
-    
+    <script src="{{asset('js/bootstrap-toggle.min.js')}}"></script>
     
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bulma.css') }}" rel="stylesheet">
     <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-datepicker.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('css/bootstrap-toggle.min.css') }}" rel="stylesheet">
 
 
 
@@ -168,9 +168,8 @@
                     </p>
                     <hr style="margin: 0">
                     <ul class="menu-list">
-                    <li class="text-right"><a href="{{route('attendance.index')}}>ادخال الغياب  <img src="{{asset('images/absent.png')}}" width="30px"></a></li>
-                    <li class="text-right"><a>عرض الغياب  <img src="{{asset('images/year.png')}}" width="30px"></a></li>
-                    </ul>
+                    <li class="text-right"><a href="{{route('attendance.index')}}">ادخال الغياب  <img src="{{asset('images/absent.png')}}" width="30px"></a></li>
+                    <li class="text-right"><a href="{{route('attendance.show')}}">عرض الغيابات<img src="{{asset('images/absent.png')}}" width="30px"></a></li>
 
                     <hr style="margin: 0">
                     <p class="menu-label text-right">
