@@ -83,7 +83,7 @@
 <body>
     <div id="app">
 
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel" id="navdiv">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -143,11 +143,11 @@
                 @endif
             <div class="row justify-content-center ">
 
-            <div class="col-md-9">
+            <div class="col-md-9" id="contentdiv">
                 @yield('content')
             </div>  
 
-            <div class="col-md-3">
+            <div class="col-md-3" id="menudiv">
             <div class="card border-dark">
             <div class="card-header text-white bg-dark"><b> القائمة الرئيسية </b></div>   
             <div class="card-body">
