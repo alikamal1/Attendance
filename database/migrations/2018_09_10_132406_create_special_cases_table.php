@@ -17,7 +17,7 @@ class CreateSpecialCasesTable extends Migration
             $table->increments('id');
             $table->integer('student_id')->unsigned();
             $table->integer('subject_id')->unsigned();
-            $table->boolean('case_type');
+            $table->string('case_type');
             $table->timestamps();
         });
 

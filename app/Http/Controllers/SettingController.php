@@ -20,7 +20,7 @@ class SettingController extends Controller
         $settings_stage= Setting::where('name','مرحلة')->get();
         $settings_branch = Setting::where('name','تخصص')->get();
         $settings_hours = Setting::where('name','ساعة')->get();
-        $settings_case_type = Setting::where('name','اجازة')->get();
+        $settings_case_type = Setting::where('name','حالة')->get();
         $settings_subject_type = Setting::where('name','مادة')->get();
         
         return view('setting.index')

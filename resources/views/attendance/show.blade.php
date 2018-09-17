@@ -151,10 +151,10 @@
                         document.getElementById("subjecttd").innerHTML = response.subject;
 
                         $('#dates_table').empty();
-                        var trHTML = '';
+                        var trHTML = '<thead class="thead-light"><tr><th class="text-center">التاريخ</th><th class="text-center">اضافة اجازة</th><th class="text-center">تعديل القائمة</th><th class="text-center">حذف القائمة</th></tr></thead>';
                         $.each(response.data, function (i, data) {
                             //bad urls
-                        trHTML += '<tr ><td class="text-center"><button type="button" class="btn btn-outline-primary btn-block btn-lg">' + data.date + '</button> </td><td class="text-center"><a href="edit/'+data.subject_id+'/'+data.date + '"> <img width="30px" height="30px" src="{{asset('images/edit.png')}}" title="تعديل" alt="تعديل"></a></td><td class="text-center"> <a href="delete/'+data.subject_id+'/'+data.date + '" class="delete-button" title="حذف" > <img width="30px" height="30px" src="{{asset('images/delete.png')}}" title="حذف" alt="حذف"></a></td></tr>';
+                        trHTML += '<tr ><td class="text-center"><button type="button" class="btn btn-outline-primary btn-block btn-lg">' + data.date + '</button> </td><td class="text-center"><a href="allow/'+data.subject_id+'/'+data.date + '"> <img width="30px" height="30px" src="{{asset('images/allow.png')}}" title="اجازة" alt="اجازة"></a></td><td class="text-center"><a href="edit/'+data.subject_id+'/'+data.date + '"> <img width="30px" height="30px" src="{{asset('images/edit.png')}}" title="تعديل" alt="تعديل"></a></td><td class="text-center"> <a href="delete/'+data.subject_id+'/'+data.date + '" class="delete-button" title="حذف" > <img width="30px" height="30px" src="{{asset('images/delete.png')}}" title="حذف" alt="حذف"></a></td></tr>';
                         });
                         $('#dates_table').append(trHTML);
                         }
@@ -278,20 +278,7 @@
         </table>
      <table class="table table-hover text-center" id="dates_table">
 
-        <thead class="thead-light">
-        <tr>
-            <th class="text-center">
-               التاريخ
-            </th>
-            <th class="text-center">
-               تعديل
-            </th>
-            <th class="text-center">
-                خذف
-            </th>
-
-        </tr>
-        </thead>
+        
         <tbody>
              
     </div>

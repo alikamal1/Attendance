@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Student;
 use App\Setting;
 use App\Level;
+use App\SpecialCase;
 use Session;
 use Excel;
 class StudentController extends Controller
@@ -19,7 +20,7 @@ class StudentController extends Controller
     {
         return view('student.index')->with('levels',Level::all())
         ->with('settings',Setting::all())
-        ->with('years',Setting::where('name','سنة')->get());
+        ->with('years',Setting::where('name','سنة')->orderByDesc('created_at')->get());
     }
 
     /**
@@ -174,4 +175,5 @@ class StudentController extends Controller
         return redirect()->route('student.show',$request->level_id);
 
     }
+
 }

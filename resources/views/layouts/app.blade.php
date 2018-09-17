@@ -169,7 +169,15 @@
                     <hr style="margin: 0">
                     <ul class="menu-list">
                     <li class="text-right"><a href="{{route('attendance.index')}}">ادخال الغياب  <img src="{{asset('images/absent.png')}}" width="30px"></a></li>
-                    <li class="text-right"><a href="{{route('attendance.show')}}">تعديل الغيابات   <img src="{{asset('images/absent.png')}}" width="30px"></a></li>
+                    <li class="text-right"><a href="{{route('attendance.show')}}">تعديل الغيابات   <img src="{{asset('images/edit_absent.png')}}" width="30px"></a></li>
+
+                    <hr style="margin: 0">
+                    <p class="menu-label align-content-center">
+                      التقارير
+                    </p>
+                    <hr style="margin: 0">
+                    <ul class="menu-list">
+                    <li class="text-right"><a href="{{route('report.index')}}">تقارير الغيابات <img src="{{asset('images/report.png')}}" width="30px"></a></li>
 
                     <hr style="margin: 0">
                     <p class="menu-label text-right">

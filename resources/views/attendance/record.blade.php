@@ -91,8 +91,9 @@
         </thead>
         <tbody>
             <form action="{{route('attendance.store')}}" method="get">
-            
+
             @foreach($students as  $key => $student)
+            @if($student->specialcases()->where('subject_id',$subject_id)->get()->first() === null)
             <tr >
             <td class="text-center">
                 <b>{{$key+1}}</b>
@@ -106,8 +107,20 @@
                 <input hidden type="text"  id="student_id={{$student->id}}" name="{{$student->id}}" value="1">
 
             </td>
-
-            </tr>  
+            </tr>
+            @else
+            <tr >
+            <td class="text-center">
+                <b>{{$key+1}}</b>
+            </td>
+            <td class="text-center">
+                {{$student->name}}
+            </td>
+            <td class="text-center">
+                <button disabled class="btn btn-outline-primary btn-lg">مستوفي</button>
+            </td>
+            </tr>
+            @endif  
             @endforeach
 
             <td colspan="3">

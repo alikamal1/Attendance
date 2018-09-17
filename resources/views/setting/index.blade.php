@@ -319,14 +319,14 @@
 
 <div class="card border-dark">
     <div class="card-header text-white bg-dark">
-        <b>اعدادات نوع الاجازة</b>
+        <b>اعدادات الحالات الخاصة</b>
     </div>
     <div class="card-body">
      <table class="table table-hover text-right">
         <thead class="thead-light">
         <tr>
             <th class="text-right">
-               نوع الاجازة
+               نوع الحالة
             </th>
             <th class="text-right">
                 تعديل

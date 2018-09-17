@@ -154,5 +154,45 @@ class AttendanceController extends Controller
     	Session::flash('success','تم حذف قائمة الغياب بنجاح');
         return redirect()->route('attendance.show');
     }
+
+    public function allow($subject_id, $date)
+    {
+        $date = $date;
+        $subject_id = $subject_id;
+
+        $subject = Subject::find($subject_id)->name;
+        $level_id = Subject::find($subject_id)->level_id;
+        $level = Level::find($level_id);
+        $students = Student::where('level_id',$level_id)->get();
+        $attendances = Attendance::where('subject_id',$subject_id)->where('date',$date)->get();
+
+        return view('attendance.allow')->with('students',$students)
+                                        ->with('level',$level)
+                                        ->with('date',$date)
+                                        ->with('subject',$subject)
+                                        ->with('subject_id',$subject_id)
+                                        ->with('attendances',$attendances);
+    }
+
+    public function updateallow(Request $request)
+    {
+
+        $date = $request->date;
+        $subject_id = $request->subject_id;
+        $subject_teacher_id = 0;
+
+        $requeestData = $request->request;
+        $requeestData = $request->except(['date','subject_id']);
+
+        foreach($requeestData as  $student_id => $allow)
+        {
+            $attendance = Attendance::where('student_id',$student_id)->where('date',$date)->where('subject_id',$subject_id)->first();
+            $attendance->allow =  $allow;
+            $attendance->save();
+        }
+
+        Session::flash('success','تم تحديث قائمة الاجازات بنجاح');
+        return redirect()->route('attendance.show');
+    }
     
 }

@@ -148,7 +148,7 @@
 <div class="card border-dark">
     <div class="card-header text-white bg-dark"><b> تقارير الغيابات</b></div>
     <div class="card-body">
-    <form action="{{route('report.show')}}" method="GET">
+    <form action="{{route('report.show')}}" method="GET" target="_blank">
         
     <div class="form-row text-right" style="direction: rtl;" >
         <div class="form-group col-md-6" id="yeardiv">   
@@ -196,7 +196,7 @@
     </div>
     <div class="form-group" id="submitdiv">
         <input hidden type="text" id="level_id" name="level_id">
-        <button type="submit" class="btn btn-success btn-block btn-lg"> اعرض التقرير</button>
+        <button type="submit"  class="btn btn-success btn-block btn-lg"> اعرض التقرير</button>
     </div>
     </form>
     </div>

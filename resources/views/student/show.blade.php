@@ -54,6 +54,9 @@
             <th class="text-right">
                اسم الطالب
             </th>
+            <th class="text-center">
+                الحالات الخاصة
+            </th>
             <th class="text-right">
                 تعديل
             </th>
@@ -67,6 +70,11 @@
             <tr >
             <td class="text-right">
                 {{$student->name}}
+            </td>
+            <td class="text-center">
+                <a href="{{route('special_case.index',['student_id'=>$student->id])}}">
+                    <img width="30px" height="30px" src="{{asset('images/case.png')}}" title="تعديل" alt="تعديل">
+                </a>
             </td>
             <td class="text-right">
                 <a href="{{route('student.edit',['id'=>$student->id])}}">

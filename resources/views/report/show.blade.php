@@ -9,6 +9,12 @@
         align-content: center;
         vertical-align: middle;
     }
+    .subjectth {
+        height: fit-content; 
+        text-align: center; 
+        vertical-align: middle;
+        text-align: center !important;
+    }
 
 </style>
 <script>
@@ -89,13 +95,13 @@
      <table class="table text-center  table-bordered "   >
         <thead class="thead-light" >
         <tr>
-            <th class="text-center" style=" height: fit-content; text-align: center;vertical-align: middle;">
+            <th class="subjectth">
              <p style="height: fit-content; text-align: center; " > اســــم الطــالـــــــب </p> 
             </th>
 
             @foreach($subjects as $subject)
-            <th class="text-center"  style="height: fit-content; text-align: center;">
-                <p class="subjects">{{$subject->name}}aaaaa  aaaaaaaaaaaaa aaaa</p>   
+            <th class="subjectth" >
+                <p class="subjects">{{$subject->name}}</p>   
             </th>
             @endforeach
 
@@ -110,9 +116,15 @@
             </td>
             {{-- subject->subject_pass()->first()->hours_count --}}
             @foreach($subjects as $subject)
+            @if($student->specialcases()->where('subject_id',$subject->id)->get()->first() === null)
             <td class=" text-center" >
-                {{ ($subject->attendances()->whereBetween('date',[$datefrom,$dateto])->where('student_id',$student->id)->where('status','0')->count()) *  $subject->hours}}
+                {{ ($subject->attendances()->whereBetween('date',[$datefrom,$dateto])->where('student_id',$student->id)->where('status','0')->where('allow','0')->count()) *  $subject->hours}}
             </td>
+            @else
+            <td class="text-center">
+                <button disabled class="btn btn-outline-primary btn-lg">مستوفي</button>
+            </td>
+            @endif  
             @endforeach
 
             </tr>  

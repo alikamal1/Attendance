@@ -14,7 +14,7 @@ class student extends Model
         return $this->belongsTo('App\Level');
     }
 
-    public function SpecialCases()
+    public function specialcases()
     {
         return $this->hasMany('App\SpecialCase');
     }

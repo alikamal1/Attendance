@@ -62,9 +62,24 @@ Route::get('/attendance/edit','AttendanceController@edit')->name('attendance.edi
 Route::get('/attendance/edit/{subject_id}/{date}','AttendanceController@edit')->name('attendance.edit');
 Route::get('/attendance/update','AttendanceController@update')->name('attendance.update');
 Route::get('/attendance/delete/{subject_id}/{date}','AttendanceController@delete')->name('attendance.delete');
+Route::get('/attendance/allow/{subject_id}/{date}','AttendanceController@allow')->name('attendance.allow');
+Route::get('/attendance/updateallow','AttendanceController@updateallow')->name('attendance.updateallow');
+
+
 
 Route::get('/report','ReportController@index')->name('report.index');
 Route::get('/report/show','ReportController@show')->name('report.show');
+
+Route::get('/special_case/{student_id}','SpecialCaseController@index')->name('special_case.index');
+Route::get('/special_case/create/{student_id}','SpecialCaseController@create')->name('special_case.create');
+Route::post('/special_case/store','SpecialCaseController@store')->name('special_case.store');
+Route::get('/special_case/destroy/{special_case_id}/{student_id}','SpecialCaseController@destroy')->name('special_case.destroy');
+Route::get('/special_case/edit/{special_case_id}/{student_id}','SpecialCaseController@edit')->name('special_case.edit');
+Route::post('/special_case/update','SpecialCaseController@update')->name('special_case.update');
+
+
+
+
 
 
 
