@@ -42,9 +42,13 @@
     function printreport() {
         $('#printbtn1').hide();
         $('#printbtn2').hide();
+        $('#footerdiv').hide();
+        
         window.print();
+
         $('#printbtn1').show();
         $('#printbtn2').show();
+        $('#footerdiv').show();
 
     }
 </script>
@@ -122,7 +126,7 @@
             </td>
             @else
             <td class="text-center">
-                <button disabled class="btn btn-outline-primary btn-lg">مستوفي</button>
+                مستوفي
             </td>
             @endif  
             @endforeach

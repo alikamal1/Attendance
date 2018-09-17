@@ -22,6 +22,7 @@ class SettingController extends Controller
         $settings_hours = Setting::where('name','ساعة')->get();
         $settings_case_type = Setting::where('name','حالة')->get();
         $settings_subject_type = Setting::where('name','مادة')->get();
+        $settings_alert = Setting::where('name','انذرات')->get();
         
         return view('setting.index')
         ->with('settings_year',$settings_year)
@@ -30,7 +31,8 @@ class SettingController extends Controller
         ->with('settings_branch',$settings_branch)
         ->with('settings_hours',$settings_hours)
         ->with('settings_case_type',$settings_case_type)
-        ->with('settings_subject_type',$settings_subject_type);
+        ->with('settings_subject_type',$settings_subject_type)
+        ->with('settings_alert',$settings_alert);
 
     }
 

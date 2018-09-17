@@ -86,7 +86,7 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel" id="navdiv">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    Computer Engineering Department
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -105,9 +105,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
+                            </li> --}}
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -146,7 +146,7 @@
             <div class="col-md-9" id="contentdiv">
                 @yield('content')
             </div>  
-
+            @auth
             <div class="col-md-3" id="menudiv">
             <div class="card border-dark">
             <div class="card-header text-white bg-dark"><b> القائمة الرئيسية </b></div>   
@@ -209,6 +209,7 @@
             </div>
           
                 </div>
+                @endauth
                 
     </div>
     </div>
@@ -227,5 +228,9 @@
     </script>
 
 </script>
+<footer class="container text-center" id="footerdiv">
+      <p style="color:gray;">© Ali Kamal </p>
+
+    </footer>
 </body>
 </html>

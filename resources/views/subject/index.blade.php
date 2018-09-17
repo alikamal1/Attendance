@@ -2,6 +2,9 @@
 
 @section('content')
 
+<div class="alert alert-primary text-center"  role="alert">
+اختر المرحلة المعنية لغرض اضافة مادة دراسية وعدد ساعاتها
+</div>
 
 @foreach($levels as $key => $leveldata)
 
@@ -41,7 +44,7 @@
         {{$level->branch}}
     </td>
     <td colspan="2" class="text-right">
-        <a class="btn btn-primary  btn-lg btn-block" href="{{route('subject.showsubject',['id'=>$level->id])}}">
+        <a class="btn btn-success  btn-lg btn-block" href="{{route('subject.showsubject',['id'=>$level->id])}}">
             عرض قوائم المواد
         </a>
     </td>

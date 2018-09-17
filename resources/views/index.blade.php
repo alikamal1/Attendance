@@ -12,51 +12,7 @@
     <div class="card-body">
     <img src="{{asset('images/absent.png')}}" alt="">
     <hr>
-    <button type="button" class="btn btn-lg btn-block btn-primary">تسجيل الغياب</button>
-    </div>
-  </div>
-  <div class="card mb-4 shadow-sm">
-    <div class="card-header">
-    <h4 class="my-0 font-weight-normal">الاعدادات</h4>
-    </div>
-    <div class="card-body">
-    <img src="{{asset('images/setting.png')}}" alt="">
-    <hr>
-    <button type="button" class="btn btn-lg btn-block btn-primary">اعدادات النظام</button>
-    </div>
-  </div>
-  <div class="card mb-4 shadow-sm">
-    <div class="card-header">
-    <h4 class="my-0 font-weight-normal">التدريسين</h4>
-    </div>
-    <div class="card-body">
-    <img src="{{asset('images/profile.png')}}" alt="">
-    <hr>
-    </head>
-    <button type="button" class="btn btn-lg btn-block btn-primary">التدريسين</button>
-    </div>
-  </div>
-</div>
-
-<div class="card-deck mb-3 text-center " style="direction: rtl;">
-  <div class="card mb-4 shadow-sm">
-    <div class="card-header">
-    <h4 class="my-0 font-weight-normal"> السنة الدراسية</h4>
-    </div>
-    <div class="card-body">
-    <img src="{{asset('images/subject.png')}}" alt="">
-    <hr>
-    <button type="button" class="btn btn-lg btn-block btn-primary">المواد الدراسية</button>
-    </div>
-  </div>
-  <div class="card mb-4 shadow-sm">
-    <div class="card-header">
-    <h4 class="my-0 font-weight-normal">الطلاب</h4>
-    </div>
-    <div class="card-body">
-    <img src="{{asset('images/student.png')}}" alt="">
-    <hr>
-    <button type="button" class="btn btn-lg btn-block btn-primary">قوائم الطلاب</button>
+    <a href="{{route('attendance.index')}}" class="btn btn-lg btn-block btn-primary">ادخال الغياب</a>
     </div>
   </div>
   <div class="card mb-4 shadow-sm">
@@ -64,12 +20,81 @@
     <h4 class="my-0 font-weight-normal">التقارير</h4>
     </div>
     <div class="card-body">
-    <img src="{{asset('images/year.png')}}" alt="">
+    <img src="{{asset('images/report.png')}}" alt="">
     <hr>
-    </head>
-    <button type="button" class="btn btn-lg btn-block btn-primary">تقارير الغياب</button>
+    <a href="{{route('report.index')}}" class="btn btn-lg btn-block btn-primary">تقارير الغيابات</a>
     </div>
   </div>
+  
+</div>
+
+<div class="card-deck mb-3 text-center " style="direction: rtl;">
+    <div class="card mb-4 shadow-sm">
+    <div class="card-header">
+    <h4 class="my-0 font-weight-normal">الغيابات</h4>
+    </div>
+    <div class="card-body">
+    <img src="{{asset('images/edit_absent.png')}}" alt="">
+    <hr>
+    <a href="{{route('attendance.show')}}" class="btn btn-lg btn-block btn-primary">تعديل الغيابات</a>
+    </div>
+  </div>
+    
+  <div class="card mb-4 shadow-sm">
+    <div class="card-header">
+    <h4 class="my-0 font-weight-normal">لوحة تحكم الطلاب</h4>
+    </div>
+    <div class="card-body">
+    <img src="{{asset('images/student.png')}}" alt="">
+    <hr>
+    <a href="{{route('student.index')}}" class="btn btn-lg btn-block btn-primary">الطلاب</a>
+    </div>
+  </div>
+  <div class="card mb-4 shadow-sm">
+    <div class="card-header">
+    <h4 class="my-0 font-weight-normal">لوحة تحكم التدريسيين</h4>
+    </div>
+    <div class="card-body">
+    <img src="{{asset('images/profile.png')}}" alt="">
+    <hr>
+    <a href="{{route('teacher.index')}}" class="btn btn-lg btn-block btn-primary">التدريسيين</a>
+    </div>
+  </div>
+  
+</div>
+
+<div class="card-deck mb-3 text-center " style="direction: rtl;">
+    <div class="card mb-4 shadow-sm">
+    <div class="card-header">
+    <h4 class="my-0 font-weight-normal">لوحة تحكم المواد</h4>
+    </div>
+    <div class="card-body">
+    <img src="{{asset('images/subjects.png')}}" alt="">
+    <hr>
+    <a href="{{route('subject.index')}}" class="btn btn-lg btn-block btn-primary"> المواد الدراسية </a>
+    </div>
+  </div>
+  <div class="card mb-4 shadow-sm">
+    <div class="card-header">
+    <h4 class="my-0 font-weight-normal">لوحة تحكم المراحل </h4>
+    </div>
+    <div class="card-body">
+    <img src="{{asset('images/level.png')}}" alt="">
+    <hr>
+    <a href="{{route('level.index')}}" class="btn btn-lg btn-block btn-primary">المراحل الدراسية</a>
+    </div>
+  </div>
+  <div class="card mb-4 shadow-sm">
+    <div class="card-header">
+    <h4 class="my-0 font-weight-normal">النظام</h4>
+    </div>
+    <div class="card-body">
+    <img src="{{asset('images/setting.png')}}" alt="">
+    <hr>
+    <a href="{{route('setting.index')}}" class="btn btn-lg btn-block btn-primary">اعدادات النظام</a>
+    </div>
+  </div>
+  
 </div>
 
 

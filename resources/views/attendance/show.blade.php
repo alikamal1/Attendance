@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+
+<div class="alert alert-primary text-center"  role="alert">
+اختر القائمة المعنية لغرض تعديل الغيابات او حذف قائمة او لغرض اضافة اجازة 
+</div>
+
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
       <script>

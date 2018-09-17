@@ -11,11 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('index');
+
 
 Auth::routes();
+
+Route::group(['middleware' => 'auth'], function() {
+ 
+Route::get('/', function () {
+    return view('index');
+})->name('index');  
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -77,6 +81,7 @@ Route::get('/special_case/destroy/{special_case_id}/{student_id}','SpecialCaseCo
 Route::get('/special_case/edit/{special_case_id}/{student_id}','SpecialCaseController@edit')->name('special_case.edit');
 Route::post('/special_case/update','SpecialCaseController@update')->name('special_case.update');
 
+});
 
 
 

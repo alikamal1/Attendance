@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 <script>
     function changeAttendanceState(id)
     {

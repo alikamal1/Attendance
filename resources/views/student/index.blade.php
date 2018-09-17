@@ -2,6 +2,9 @@
 
 @section('content')
 
+<div class="alert alert-primary text-center"  role="alert">
+ اختر قائمة الطلاب 
+</div>
 
 @foreach($years as $year)
 
@@ -42,7 +45,7 @@
                 {{$level->branch}}
             </td>
             <td colspan="2" class="text-right">
-                <a class="btn btn-primary  btn-lg btn-block" href="{{route('student.show',['id'=>$level->id])}}">
+                <a class="btn btn-success  btn-lg btn-block" href="{{route('student.show',['id'=>$level->id])}}">
                     عرض قوائم اسماء   الطلاب
                 </a>
             </td>

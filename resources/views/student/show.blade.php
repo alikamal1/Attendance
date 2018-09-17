@@ -2,7 +2,9 @@
 
 @section('content')
 
-
+<div class="alert alert-primary text-center"  role="alert">
+الحالات الخاصة: تستخدم لتحديد حالة الطالب مثلا مستوفي لمادة معينة
+</div>
 
 <div class="card border-dark">
     <div class="card-header text-white bg-dark">

@@ -2,6 +2,9 @@
 
 @section('content')
 
+<div class="alert alert-primary text-center"  role="alert">
+لوحة تحكم المواد الدراسية الخاصة لكل سنة او كورس دراسي
+</div>
 
 @foreach($years as $year)
 

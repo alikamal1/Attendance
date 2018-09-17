@@ -361,7 +361,58 @@
             @else
                 <tr><td colspan="3" class="text-center">لا توجد اعدادات حاليا</td></tr>
         @endif
-        <td colspan="3"> <a href="{{route('setting.show',['اجازة'])}}" class="btn btn-success btn-lg btn-block" >اضافة نوع اجازة جديد </a> </td>
+        <td colspan="3"> <a href="{{route('setting.show',['حالة'])}}" class="btn btn-success btn-lg btn-block" >  اضافة حالة خاصة جديدة  </a> </td>
+        </tbody>
+    </table>  
+    </div>
+</div>
+<br>
+
+<div class="card border-dark">
+    <div class="card-header text-white bg-dark">
+        <b>اعدادات انذارات الغيابات</b>
+    </div>
+    <div class="card-body">
+     <table class="table table-hover text-right">
+        <thead class="thead-light">
+        <tr>
+            <th class="text-right">
+               نوع الانذار
+            </th>
+            <th class="text-right">
+                تعديل
+            </th>
+            <th class="text-right">
+                حذف
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        @if($settings_alert->count() >0)
+            @foreach($settings_alert as $alert)
+            <tr >
+            <td class="text-right">
+                {{$alert->value}}
+            </td>
+            <td class="text-right">
+                <a href="{{route('setting.edit',['id'=>$alert->id])}}">
+                    <img width="30px" height="30px" src="{{asset('images/edit.png')}}" title="" alt="تعديل">
+                </a>
+            </td>
+            <td class="text-right">
+                <form action="{{ route('setting.destroy',['id'=>$alert->id]) }}" method="POST">
+                    {{csrf_field()}}
+                    {{ method_field('DELETE') }}
+                    <button class="delete-button" title="حذف" type="submit"> <img width="30px" height="30px" src="{{asset('images/delete.png')}}" title="حذف" alt="حذف">
+                    </button>
+                </form>
+            </td>
+            </tr>
+            @endforeach
+            @else
+                <tr><td colspan="3" class="text-center">لا توجد اعدادات حاليا</td></tr>
+        @endif
+        <td colspan="3"> <a href="{{route('setting.show',['انذرات'])}}" class="btn btn-success btn-lg btn-block" >اضافة نوع انذرات جديدة </a> </td>
         </tbody>
     </table>  
     </div>
