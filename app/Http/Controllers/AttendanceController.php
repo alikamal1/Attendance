@@ -119,18 +119,20 @@ class AttendanceController extends Controller
     public function update(Request $request)
     {
 
-    	$date = $request->date;
+    	$date_old = $request->date_old;
+        $date_new = $request->date_new;
     	$subject_id = $request->subject_id;
     	$subject_teacher_id = 0;
     	$allow = 0;
 
     	$requeestData = $request->request;
-    	$requeestData = $request->except(['date','subject_id']);
+    	$requeestData = $request->except(['date_old','date_new','subject_id']);
 
     	foreach($requeestData as  $student_id => $status)
     	{
-    		$attendance = Attendance::where('student_id',$student_id)->where('date',$date)->where('subject_id',$subject_id)->first();
+    		$attendance = Attendance::where('student_id',$student_id)->where('date',$date_old)->where('subject_id',$subject_id)->first();
     		$attendance->status =  $status;
+            $attendance->date =  $date_new;
     		$attendance->save();
     	}
 

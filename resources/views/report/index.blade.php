@@ -6,8 +6,7 @@
 طباعة تقارير الغيابات
 </div>
 
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+ 
       <script>
 
 
@@ -192,11 +191,11 @@
     <div class="form-row text-right" style="direction: rtl;" >
         <div class="form-group col-md-6"  id="datefromdiv">   
             <label style="float: right;">  التاريخ من فترة</label>
-            <input type="text" id="datefrom"  name="datefrom" class="form-group" data-provide="datepicker" style="text-align: center; padding: 5px; margin-top:32px;" onchange="getdateto()">
+            <input type="text" id="datefrom"  name="datefrom" class="form-group" data-provide="datepicker" style="text-align: center; padding: 5px; margin-top:32px;" onchange="getdateto()" autocomplete="off">
         </div>
         <div class="form-group col-md-6"  id="datetodiv" >   
             <label style="float: right;"> التاريخ الى فترة</label>
-            <input type="text" id="dateto"  name="dateto" class="form-group" data-provide="datepicker" style="text-align: center; padding: 5px; margin-top:32px;" onchange="getsubmit()">
+            <input type="text" id="dateto"  name="dateto" class="form-group" data-provide="datepicker" style="text-align: center; padding: 5px; margin-top:32px;" onchange="getsubmit()" autocomplete="off">
         </div>
     </div>
     <div class="form-group" id="submitdiv">

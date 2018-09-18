@@ -56,4 +56,10 @@ class AjaxGetController extends Controller
         return response()->json(array('level_id'=> $level_id), 200);
     }
 
+    public function getstudents($year,$study,$stage,$branch)
+    {
+        $students = Level::where('year',$year)->where('study',$study)->where('stage',$stage)->where('branch',$branch)->first()->students()->get();
+        return response()->json(array('students'=> $students), 200);
+    }
+
 }

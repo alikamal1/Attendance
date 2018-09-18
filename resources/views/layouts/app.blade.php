@@ -15,6 +15,8 @@
     <script src="{{asset('js/bootstrap-datepicker.js')}}"></script>
     <script src="{{asset('js/bootstrap-datepicker.ar.min.js')}}"></script>
     <script src="{{asset('js/bootstrap-toggle.min.js')}}"></script>
+    <script src="{{asset('js/select2.min.js')}}"></script>
+
     
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -22,6 +24,7 @@
     <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-datepicker.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-toggle.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
 
 
 
@@ -56,6 +59,9 @@
         font-weight: bold !important;
         text-align: center !important;
     }
+    .card-header.bg-dark {
+        background-color: #414f5d !important;
+    }
     
     .table {
         direction: rtl;
@@ -77,22 +83,26 @@
     left: 12px !important;
     right: unset !important;;
 }
+
+.select2-results__option {
+    text-align: center;
+}
    
 </style>
 </head>
 <body>
     <div id="app">
 
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel" id="navdiv">
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel" style="background: #414f5d" id="navdiv">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" style="color: white" href="{{ url('/') }}">
                     Computer Engineering Department
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="navbar-toggler" type="button" data-toggle="collapse"  data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent" >
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
 
@@ -102,15 +112,15 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
+                            <li class="nav-item" >
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             {{-- <li class="nav-item">
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li> --}}
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <li class="nav-item dropdown" >
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color: white">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
@@ -177,7 +187,7 @@
                     </p>
                     <hr style="margin: 0">
                     <ul class="menu-list">
-                    <li class="text-right"><a href="{{route('report.index')}}">تقارير الغيابات <img src="{{asset('images/report.png')}}" width="30px"></a></li>
+                    <li class="text-right"><a href="{{route('report.home')}}">تقارير الغيابات <img src="{{asset('images/report.png')}}" width="30px"></a></li>
 
                     <hr style="margin: 0">
                     <p class="menu-label text-right">

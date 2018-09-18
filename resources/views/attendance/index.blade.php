@@ -6,8 +6,7 @@
 اختر القائمة المعنية لغرض ادخال الغيابات
 </div>
 
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+ 
       <script>
 
 
@@ -196,7 +195,7 @@
         </div>
         <div class="form-group col-md-6"  id="datediv" >   
             <label style="float: right;">التاريخ</label>
-            <input type="text" id="date"  name="date" class="form-group" data-provide="datepicker" style="text-align: center; padding: 5px; margin-top:32px;" onchange="getsubmit()">
+            <input type="text" id="date"  name="date" class="form-group" data-provide="datepicker" style="text-align: center; padding: 5px; margin-top:32px;" onchange="getsubmit()" autocomplete="off">
         </div>
     </div>
     <div class="form-group" id="submitdiv">

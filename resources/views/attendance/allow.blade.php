@@ -87,6 +87,7 @@
             <form action="{{route('attendance.updateallow')}}" method="get">
             
             @foreach($students as  $key => $student)
+            @if($student->attendances()->where('date',$date)->where('subject_id',$subject_id)->first())
             <tr >
             <td class="text-center">
                 <b>{{$key+1}}</b>
@@ -103,6 +104,7 @@
             </td>
 
             </tr>  
+            @endif
             @endforeach
 
             <td colspan="3">

@@ -53,6 +53,8 @@ Route::get('/ajax/getbranch/{year}/{study}/{stage}','AjaxGetController@getbranch
 Route::get('/ajax/getsubject/{year}/{study}/{stage}/{branch}','AjaxGetController@getsubject');
 Route::get('/ajax/getattendancelist/{subject_id}','AjaxGetController@getattendancelist');
 Route::get('/ajax/getlevelid/{year}/{study}/{stage}/{branch}','AjaxGetController@getlevelid');
+Route::get('/ajax/getstudents/{year}/{study}/{stage}/{branch}','AjaxGetController@getstudents');
+
 
 
 
@@ -69,10 +71,14 @@ Route::get('/attendance/delete/{subject_id}/{date}','AttendanceController@delete
 Route::get('/attendance/allow/{subject_id}/{date}','AttendanceController@allow')->name('attendance.allow');
 Route::get('/attendance/updateallow','AttendanceController@updateallow')->name('attendance.updateallow');
 
-
-
-Route::get('/report','ReportController@index')->name('report.index');
+Route::get('/report','ReportController@home')->name('report.home');
+Route::get('/report/index','ReportController@index')->name('report.index');
 Route::get('/report/show','ReportController@show')->name('report.show');
+Route::get('/report/index_subject_based','ReportController@index_subject_based')->name('report.index_subject_based');
+Route::get('/report/show_subject_based','ReportController@show_subject_based')->name('report.show_subject_based');
+Route::get('/report/index_student_based','ReportController@index_student_based')->name('report.index_student_based');
+Route::get('/report/show_student_based','ReportController@show_student_based')->name('report.show_student_based');
+
 
 Route::get('/special_case/{student_id}','SpecialCaseController@index')->name('special_case.index');
 Route::get('/special_case/create/{student_id}','SpecialCaseController@create')->name('special_case.create');

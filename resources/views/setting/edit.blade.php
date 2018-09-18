@@ -4,7 +4,7 @@
 
     <div class="card border-dark">
         <div class="card-header text-white bg-dark">
-            <b>تعديل السنة الدراسية: {{$setting->name}}</b>
+            <b>تعديل {{$setting->name}}</b>
         </div>
         <div class="card-body">
          <form action="{{route('setting.update',['id' => $setting->id])}}" method="POST" style="direction: rtl;">
@@ -12,7 +12,7 @@
             {{ method_field('PUT') }}
             
             <div class="form-group">
-                <label for="value" style="float: right;">السنة الدراسية</label>
+                <label for="value" style="float: right;"> ألاسم </label>
                 <input type="text" name="value" class="form-control" value="{{$setting->value}}">
             </div>
 
@@ -24,6 +24,8 @@
         
         </div>
     </div>
+
+
 
 @endsection
 

@@ -3,10 +3,9 @@
 @section('content')
 
 <div class="alert alert-primary text-center"  role="alert">
-اختر القائمة المعنية لغرض تعديل الغيابات او حذف قائمة او لغرض اضافة اجازة 
+اختر القائمة المعنية لغرض عرض غيابات الطالب
 </div>
 
- 
       <script>
 
 
@@ -15,11 +14,15 @@
         $("#studydiv").hide();
         $("#stagediv").hide();
         $("#branchdiv").hide();
-        $("#subjectdiv").hide();
-        $("#datediv").hide();
+        $("#studentdiv").hide();
+        $("#datefromdiv").hide();
+        $("#datetodiv").hide();
         $("#submitdiv").hide();
-        $("#showresult").hide();
-        
+
+        $('.student-select').select2({
+            dir: "rtl",
+            width: 'inherit'
+        });
 
         $.ajax({
                type:'GET',
@@ -29,8 +32,9 @@
                             $("#studydiv").hide();
                             $("#stagediv").hide();
                             $("#branchdiv").hide();
-                            $("#subjectdiv").hide();
-                            $("#datediv").hide();
+                            $("#studentdiv").hide();
+                            $("#datefromdiv").hide();
+                            $("#datetodiv").hide();
                             $("#submitdiv").hide();
                             $("#showresult").hide();
 
@@ -52,10 +56,11 @@
                             $("#studydiv").show();
                             $("#stagediv").hide();
                             $("#branchdiv").hide();
-                            $("#subjectdiv").hide();
-                            $("#datediv").hide();
+                            $("#studentdiv").hide();
+                            $("#datefromdiv").hide();
+                            $("#datetodiv").hide();
                             $("#submitdiv").hide();
-                            $("#showresult").hide();
+                            $("#showresult").hide()
 
                             $("#study").empty();
                             $("#study").append('<option>اختر نوع الدراسة</option>');
@@ -75,10 +80,11 @@
                success: function(response){
                             $("#stagediv").show();
                             $("#branchdiv").hide();
-                            $("#subjectdiv").hide();
-                            $("#datediv").hide();
+                            $("#studentdiv").hide();
+                            $("#datefromdiv").hide();
+                            $("#datetodiv").hide();
                             $("#submitdiv").hide();
-                            $("#showresult").hide();
+                            $("#showresult").hide()
 
                             $("#stage").empty();
                             $("#stage").append('<option> اختر المرحلة الدراسية </option>');
@@ -98,10 +104,11 @@
                url:'/ajax/getbranch/' + year + '/' + study+ '/' + stage,
                success: function(response){
                             $("#branchdiv").show();
-                            $("#subjectdiv").hide();
-                            $("#datediv").hide();
+                            $("#studentdiv").hide();
+                            $("#datefromdiv").hide();
+                            $("#datetodiv").hide();
                             $("#submitdiv").hide();
-                            $("#showresult").hide();
+                            $("#showresult").hide()
 
                             $("#branch").empty();
                             $("#branch").append('<option>اختر التخصص الدراسي </option>');
@@ -112,77 +119,64 @@
                     });             
          }
 
-        function getsubject(branch)
+        function getstudents(branch)
         {
             year = $("#year").find(":selected").text();
             study = $("#study").find(":selected").text();
             stage = $("#stage").find(":selected").text();
+            branch = $("#branch").find(":selected").text();
             $.ajax({
                type:'GET',
-               url:'/ajax/getsubject/' + year + '/' + study+ '/' + stage+ '/' + branch,
+               url:'/ajax/getstudents/' + year + '/' + study+ '/' + stage+ '/' + branch,
                success: function(response){
-                            $("#subjectdiv").show();
-                            $("#datediv").hide();
+                            $("#studentdiv").show();
+                            $("#datefromdiv").hide();
+                            $("#datetodiv").hide();
                             $("#submitdiv").hide();
-                            $("#showresult").hide();
-                            
-                            $("#subject").empty();
-                            $("#subject").append('<option>اختر المادة الدراسية</option>');
-                            $.each(response.data, function(index, value) {
-                            $("#subject").append('<option value="'+value.id+'">'+value.name+'</option>');
+                            $("#showresult").hide()
+                            $("#student").empty();
+                            $("#student").append('<option>اختر اسم الطالب</option>');
+                            $.each(response.students, function(index, value) {
+                            $("#student").append('<option value="'+value.id+'">'+value.name+'</option>');
                             } );
                         }
                     });             
          }
 
+        function getdatefrom()
+        {
+            $("#datefromdiv").show();
+        }
+
+        function getdateto()
+        {
+            $("#datetodiv").show();
+        }
+
         function getsubmit()
         {
-            $("#submitdiv").show();
-        }
-
-        function getattendancelist()
-        {
-            document.getElementById("studytd").innerHTML = 'a';
-            subject_id = $("#subject").find(":selected").val();
+            year = $("#year").find(":selected").text();
+            study = $("#study").find(":selected").text();
+            stage = $("#stage").find(":selected").text();
+            branch = $("#branch").find(":selected").text();
             $.ajax({
                type:'GET',
-               url:'/ajax/getattendancelist/'+subject_id,
+               url:'/ajax/getlevelid/' + year + '/' + study+ '/' + stage+ '/' + branch,
                success: function(response){
-                
-                        document.getElementById("studytd").innerHTML = response.level.study;
-                        document.getElementById("stagetd").innerHTML = response.level.stage;
-                        document.getElementById("branchtd").innerHTML = response.level.branch;
-                        document.getElementById("subjecttd").innerHTML = response.subject;
-
-                        $('#dates_table').empty();
-                        var trHTML = '<thead class="thead-light"><tr><th class="text-center">التاريخ</th><th class="text-center">اضافة اجازة</th><th class="text-center">تعديل القائمة</th><th class="text-center">حذف القائمة</th></tr></thead>';
-                        $.each(response.data, function (i, data) {
-                            //bad urls
-                        trHTML += '<tr ><td class="text-center"><button type="button" class="btn btn-outline-primary btn-block btn-lg">' + data.date + '</button> </td><td class="text-center"><a href="allow/'+data.subject_id+'/'+data.date + '"> <img width="30px" height="30px" src="{{asset('images/allow.png')}}" title="اجازة" alt="اجازة"></a></td><td class="text-center"><a href="edit/'+data.subject_id+'/'+data.date + '"> <img width="30px" height="30px" src="{{asset('images/edit.png')}}" title="تعديل" alt="تعديل"></a></td><td class="text-center"> <a href="delete/'+data.subject_id+'/'+data.date + '" class="delete-button" title="حذف" > <img width="30px" height="30px" src="{{asset('images/delete.png')}}" title="حذف" alt="حذف"></a></td></tr>';
-                        });
-                        $('#dates_table').append(trHTML);
+                            $("#level_id").val(response.level_id)
+                            $("#submitdiv").show();
                         }
-
-                       
-
-                    });
-             $("#showresult").show();
+                    });  
         }
-
-
-
-
-        
-
-        
 
 
  
       </script>
 
 <div class="card border-dark">
-    <div class="card-header text-white bg-dark"><b>تعديل قوائم الغيابات</b></div>
+    <div class="card-header text-white bg-dark"><b>تقارير الغيابات الخاص بالطالب</b></div>
     <div class="card-body">
+    <form action="{{route('report.show_student_based')}}" method="GET" target="_blank">
         
     <div class="form-row text-right" style="direction: rtl;" >
         <div class="form-group col-md-6" id="yeardiv">   
@@ -212,85 +206,39 @@
         </div>
         <div class="form-group col-md-6"  id="branchdiv">   
             <label style="float: right;">الاختصاص</label>
-            <select class="form-control" id="branch"  name="branch" onchange="getsubject(this.value)">
+            <select class="form-control" id="branch"  name="branch" onchange="getstudents(this.value)">
                 
             </select>
         </div>
     </div>
     
     <div class="form-row text-right" style="direction: rtl;" >
-        <div class="form-group col-md-6"  id="subjectdiv">   
-            <label style="float: right;">المادة</label>
-            <select class="form-control" id="subject"  name="subject" onchange="getsubmit()">
+        <div class="form-group col-md-12"  id="studentdiv">   
+            <label style="float: right;">اسم الطالب</label>
+            <select class="student-select" id="student"  name="student" style="width: 100%" onchange="getdatefrom()">
                 
             </select>
         </div>
-        <div class="form-group col-md-6"  id="submitdiv" >  <br> 
-            <button type="button" class="btn btn-primary btn-block btn-lg" onclick="getattendancelist()"> عرض الغيابات </button>
         </div>
+        <div class="form-row text-right" style="direction: rtl;" >
+        <div class="form-group col-md-6"  id="datefromdiv">   
+            <label style="float: right;">  التاريخ من فترة</label>
+            <input type="text" id="datefrom"  name="datefrom" class="form-group" data-provide="datepicker" style="text-align: center; padding: 5px; margin-top:32px;" onchange="getdateto()" autocomplete="off">
+        </div>
+        <div class="form-group col-md-6"  id="datetodiv" >   
+            <label style="float: right;"> التاريخ الى فترة</label>
+            <input type="text" id="dateto"  name="dateto" class="form-group" data-provide="datepicker" style="text-align: center; padding: 5px; margin-top:32px;" onchange="getsubmit()" autocomplete="off">
+        </div>
+        </div>
+    
+    
+    <div class="form-group" id="submitdiv">
+                <input hidden type="text" id="level_id" name="level_id">
+
+        <button type="submit" class="btn btn-success btn-block btn-lg"> عرض تقرير الغيابات الخاص بالطالب </button>
     </div>
-
+    </form>
     </div>
-</div>
-
-
-<hr>
-
-
-<div class="card border-dark" id="showresult">
-    <div class="card-header text-white bg-dark">
-        قوائم الغياب    
-    </div>
-
-    <div class="card-body">
-             <table class="table table-hover text-center">
-
-         <tr>
-            <th class="text-center">
-               الدراسة
-            </th>
-            <th class="text-center">
-                المرحلة
-            </th>
-            <th class="text-center">
-                الاختصاص
-            </th>
-             <th class="text-center">
-                المادة
-            </th>
-
-
-        </tr>
-            <tr >
-
-            <td class="text-center" id="studytd">
-
-            </td>
-            <td class="text-center" id="stagetd">
-
-            </td>    
-            <td class="text-center" id="branchtd">
-
-            </td>
-            <td class="text-center" id="subjecttd">
-
-            </td>
-
-
-                
-            </tr>  
-        </table>
-     <table class="table table-hover text-center" id="dates_table">
-
-        
-        <tbody>
-             
-    </div>
-
-        </tbody>
-    </table> 
-
-</div>
 </div>
 
 

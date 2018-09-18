@@ -86,8 +86,12 @@
         </thead>
         <tbody>
             <form action="{{route('attendance.update')}}" method="get">
-            
+            <div class="form-group "  id="datediv" style="direction: rtl;text-align: center; ">   
+                <label >التاريخ</label>
+                <input type="text" id="date_new"  value="{{$date}}"  name="date_new" class="form-group" data-provide="datepicker" style="text-align: center; padding: 5px; margin-top:32px;" >
+            </div>
             @foreach($students as  $key => $student)
+            @if($student->attendances()->where('date',$date)->where('subject_id',$subject_id)->first())
             <tr >
             <td class="text-center">
                 <b>{{$key+1}}</b>
@@ -104,13 +108,14 @@
             </td>
 
             </tr>  
+            @endif
             @endforeach
 
             <td colspan="3">
             <button class="btn  btn-lg btn-primary btn-block" type="submit">حــفــــظ قائمـــة الغــيـــاب</button> </td>
     
         <input hidden type="text"  id="subject_id" name="subject_id" value="{{$subject_id}}">
-        <input hidden type="text"  id="date" name="date" value="{{$date}}">
+        <input hidden type="text"  id="date_old" name="date_old" value="{{$date}}">
         </form>
         </tbody>
     </table> 
