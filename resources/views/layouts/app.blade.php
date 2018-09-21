@@ -218,6 +218,7 @@
                     <ul class="menu-list">
                     <li class="text-right"><a href="{{route('subject.index')}}" {{ (basename(url()->current()) === 'subject') > 0  ? "class=is-active":"" }}>المواد الدارسية  <img src="{{asset('images/subjects.png')}}" width="30px"></a></li>
                     <li class="text-right"> <a href="{{route('level.index')}}" {{ strpos(url()->current(),'level') > 0  ? "class=is-active":"" }}>المراحل الدراسية  <img src="{{asset('images/level.png')}}" width="30px"></a></li>
+                    <li class="text-right"><a href="{{route('copy.index')}}" {{ strpos(url()->current(),'copy') > 0  ? "class=is-active":"" }}> نسخ االقوائم  <img src="{{asset('images/copy.png')}}" width="30px"></a></li>
                     <li class="text-right"><a href="{{route('setting.index')}}" {{ strpos(url()->current(),'setting') > 0  ? "class=is-active":"" }}>اعدادات النظام  <img src="{{asset('images/setting.png')}}" width="30px"></a></li>
                     </ul>
                     

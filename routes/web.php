@@ -93,6 +93,13 @@ Route::get('/teacher_subject/create','TeacherSubjectController@create')->name('t
 Route::get('/teacher_subject/store','TeacherSubjectController@store')->name('teacher_subject.store');
 Route::get('/teacher_subject/destroy/{subject_id}/{teacher_id}/{year}','TeacherSubjectController@destroy')->name('teacher_subject.destroy');
 
+Route::get('/copydata','CopyDataController@index')->name('copy.index');
+Route::get('/copydata/copystudentindex','CopyDataController@copyStudentindex')->name('copy.studentindex');
+Route::get('/copydata/copysubjectindex','CopyDataController@copySubjectindex')->name('copy.subjectindex');
+Route::get('/copydatastudents','CopyDataController@copyStudent')->name('copy.student');
+Route::get('/copydatasubjects','CopyDataController@copySubject')->name('copy.subject');
+
+
 
 });
 

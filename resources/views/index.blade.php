@@ -98,6 +98,17 @@
   
 </div>
 <div class="card-deck mb-3 text-center " style="direction: rtl;">
+<div class="card mb-4 shadow-sm">
+    <div class="card-header">
+    <h4 class="my-0 font-weight-normal">لوحدة تحكم النسخ</h4>
+    </div>
+    <div class="card-body">
+    <img src="{{asset('images/copy.png')}}" alt="">
+    <hr>
+    <a href="{{route('copy.index')}}" class="btn btn-lg btn-block btn-primary"> نسخ القوائم</a>
+    </div>
+  </div>
+
 
  <div class="card mb-4 shadow-sm">
     <div class="card-header">

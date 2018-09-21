@@ -57,7 +57,7 @@ class SettingController extends Controller
 
         $this->validate($request,[
             'name' => 'required',
-            'value' => 'required'
+            'value' => 'required|unique:settings'
         ]);
 
         Setting::create([

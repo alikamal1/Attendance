@@ -48,6 +48,8 @@ class LevelController extends Controller
             'branch' => 'required',
         ]);
 
+        
+
         Level::create([
             'year' => $request->year,
             'study' => $request->study,
