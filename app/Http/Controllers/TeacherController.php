@@ -131,33 +131,4 @@ class TeacherController extends Controller
     
     }
 
-    public function select($subject_id,$teacher_id,$level_id)
-    {
-        SubjectTeacher::create([
-            'subject_id' => $subject_id,
-            'teacher_id' => $teacher_id
-        ]);
-
-        Session::flash('success','تم الحفظ بنجاح');
-
-        return view('teacher.subject_teacher')
-        ->with('teacher',Teacher::find($teacher_id))
-        ->with('level',Level::find($level_id))
-        ->with('s_t',SubjectTeacher::where('teacher_id',$teacher_id)->get());
-
-    }
-
-    public function unselect($subject_id,$teacher_id,$level_id)
-    {
-        $id = SubjectTeacher::where('subject_id',$subject_id)->where('teacher_id',$teacher_id)->first()->id;
-        
-        SubjectTeacher::destroy($id);
-
-        Session::flash('success','تم الحذف بنجاح');
-
-        return view('teacher.subject_teacher')
-        ->with('teacher',Teacher::find($teacher_id))
-        ->with('level',Level::find($level_id))
-        ->with('s_t',SubjectTeacher::where('teacher_id',$teacher_id)->get());
-    }
 }

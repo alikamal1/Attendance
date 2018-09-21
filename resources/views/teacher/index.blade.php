@@ -37,7 +37,7 @@
                 {{$teacher->username}}
             </td>
             <td class="text-right">
-                <a href="{{route('teacher.show',['id'=>$teacher->id])}}">
+                <a href="{{route('teacher_subject.home')}}">
                     <img width="30px" height="30px" src="{{asset('images/subject.png')}}" title="تعديل" alt="تعديل">
                 </a>
             </td>

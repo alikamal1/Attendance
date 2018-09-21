@@ -31,7 +31,7 @@
 <div class="card-deck mb-3 text-center " style="direction: rtl;">
     <div class="card mb-4 shadow-sm">
     <div class="card-header">
-    <h4 class="my-0 font-weight-normal">الغيابات</h4>
+    <h4 class="my-0 font-weight-normal"> اعدادات الغيابات</h4>
     </div>
     <div class="card-body">
     <img src="{{asset('images/edit_absent.png')}}" alt="">
@@ -63,7 +63,18 @@
   
 </div>
 
+
 <div class="card-deck mb-3 text-center " style="direction: rtl;">
+    <div class="card mb-4 shadow-sm">
+    <div class="card-header">
+    <h4 class="my-0 font-weight-normal">لوحة تحكم التخصيص</h4>
+    </div>
+    <div class="card-body">
+    <img src="{{asset('images/teacher_subject.png')}}" alt="">
+    <hr>
+    <a href="{{route('teacher_subject.home')}}" class="btn btn-lg btn-block btn-primary"> تخصيصي المواد للتدريسين </a>
+    </div>
+  </div>
     <div class="card mb-4 shadow-sm">
     <div class="card-header">
     <h4 class="my-0 font-weight-normal">لوحة تحكم المواد</h4>
@@ -84,7 +95,11 @@
     <a href="{{route('level.index')}}" class="btn btn-lg btn-block btn-primary">المراحل الدراسية</a>
     </div>
   </div>
-  <div class="card mb-4 shadow-sm">
+  
+</div>
+<div class="card-deck mb-3 text-center " style="direction: rtl;">
+
+ <div class="card mb-4 shadow-sm">
     <div class="card-header">
     <h4 class="my-0 font-weight-normal">النظام</h4>
     </div>
@@ -94,8 +109,5 @@
     <a href="{{route('setting.index')}}" class="btn btn-lg btn-block btn-primary">اعدادات النظام</a>
     </div>
   </div>
-  
 </div>
-
-
 @endsection

@@ -7,6 +7,7 @@ use App\Level;
 use App\Setting;
 use App\Subject;
 use App\Attendance;
+use App\Teacher;
 
 class AjaxGetController extends Controller
 {
@@ -60,6 +61,12 @@ class AjaxGetController extends Controller
     {
         $students = Level::where('year',$year)->where('study',$study)->where('stage',$stage)->where('branch',$branch)->first()->students()->get();
         return response()->json(array('students'=> $students), 200);
+    }
+
+    public function getteachers()
+    {
+        $teachers = Teacher::get(['id','username']);
+        return response()->json(array('teachers' => $teachers), 200);
     }
 
 }

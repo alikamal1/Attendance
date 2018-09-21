@@ -36,9 +36,6 @@ Route::get('/subject/subjectcreate/{id}','SubjectController@subjectcreate')->nam
 Route::get('/subject/showsubject/{level_id}', 'subjectController@showsubject')->name('subject.showsubject');
 Route::resource('/subject','SubjectController');
 
-Route::get('/teacher/select/{subject_id}/{teacher_id}/{level_id}','TeacherController@select')->name('teacher.select');
-Route::get('/teacher/unselect/{subject_id}/{teacher_id}/{level_id}','TeacherController@unselect')->name('teacher.unselect');
-Route::get('/teacher/subject_teacher/{teacher_id}/{level_id}', 'TeacherController@subject_teacher')->name('teacher.subject_teacher');
 Route::resource('/teacher', 'TeacherController');
 
 Route::get('/copy/getstudy/{year}','CopyDataController@getstudy')->name('copy.getstudy');
@@ -54,6 +51,8 @@ Route::get('/ajax/getsubject/{year}/{study}/{stage}/{branch}','AjaxGetController
 Route::get('/ajax/getattendancelist/{subject_id}','AjaxGetController@getattendancelist');
 Route::get('/ajax/getlevelid/{year}/{study}/{stage}/{branch}','AjaxGetController@getlevelid');
 Route::get('/ajax/getstudents/{year}/{study}/{stage}/{branch}','AjaxGetController@getstudents');
+Route::get('/ajax/getteachers/','AjaxGetController@getteachers');
+
 
 
 
@@ -86,6 +85,14 @@ Route::post('/special_case/store','SpecialCaseController@store')->name('special_
 Route::get('/special_case/destroy/{special_case_id}/{student_id}','SpecialCaseController@destroy')->name('special_case.destroy');
 Route::get('/special_case/edit/{special_case_id}/{student_id}','SpecialCaseController@edit')->name('special_case.edit');
 Route::post('/special_case/update','SpecialCaseController@update')->name('special_case.update');
+
+Route::get('/teacher_subject/home','TeacherSubjectController@home')->name('teacher_subject.home');
+Route::get('/teacher_subject/index','TeacherSubjectController@index')->name('teacher_subject.index');
+Route::get('/teacher_subject/show','TeacherSubjectController@show')->name('teacher_subject.show');
+Route::get('/teacher_subject/create','TeacherSubjectController@create')->name('teacher_subject.create');
+Route::get('/teacher_subject/store','TeacherSubjectController@store')->name('teacher_subject.store');
+Route::get('/teacher_subject/destroy/{subject_id}/{teacher_id}/{year}','TeacherSubjectController@destroy')->name('teacher_subject.destroy');
+
 
 });
 
