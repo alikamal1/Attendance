@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Level;
+use App\Subject;
 use App\Student;
 use Session;
 // use App\Http\Controllers\AjaxGetController;
@@ -46,7 +47,7 @@ class CopyDataController extends Controller
 
         Student::where('level_id',$newLevelId)->delete();
 
-        foreach (Student::where('level_id',$oldLevelId) as $oldStudent)
+        foreach (Student::where('level_id',$oldLevelId)->get() as $oldStudent)
         {
             Student::create([
                 'name' => $oldStudent->name,
@@ -60,7 +61,7 @@ class CopyDataController extends Controller
 
     }
 
-    public function copyStubject(Request $request)
+    public function copySubject(Request $request)
     {
 
         $oldLevelId = $request->level_id1;
@@ -68,7 +69,7 @@ class CopyDataController extends Controller
 
         Subject::where('level_id',$newLevelId)->delete();
 
-        foreach (Subject::where('level_id',$oldLevelId) as $oldSubject)
+        foreach (Subject::where('level_id',$oldLevelId)->get() as $oldSubject)
         {
             Subject::create([
                 'name' => $oldSubject->name,
@@ -79,6 +80,8 @@ class CopyDataController extends Controller
         }
         
         Session::flash('success',' تمت عملية النسخ بنجاح ');
+
+        return redirect()->back();
 
     }
 

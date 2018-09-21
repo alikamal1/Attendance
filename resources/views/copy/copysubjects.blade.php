@@ -232,7 +232,7 @@
 <div class="card border-dark">
     <div class="card-header text-white bg-dark"><b> نسخ معلومات المواد الدراسية من </b></div>
     <div class="card-body">
-    <form action="{{route('copy.student')}}" method="GET">
+    <form action="{{route('copy.subject')}}" method="GET">
         
     <div class="form-row text-right" style="direction: rtl;" >
         <div class="form-group col-md-6" id="yeardiv">   

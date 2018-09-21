@@ -314,7 +314,7 @@
         <input hidden type="text" id="level_id1" name="level_id1">
         <input hidden type="text" id="level_id2" name="level_id2">
 
-        <button type="submit" class="btn btn-success btn-block btn-lg"> اختر </button>
+        <button type="submit" class="btn btn-success btn-block btn-lg">بدء عملية النسخ </button>
     </div>
     </form>
     </div>
