@@ -50,7 +50,7 @@
                 <form action="{{ route('teacher.destroy',['id'=>$teacher->id]) }}" method="POST">
                     {{csrf_field()}}
                     {{ method_field('DELETE') }}
-                    <button class="delete-button" title="حذف" type="submit"> <img width="30px" height="30px" src="{{asset('images/delete.png')}}" title="حذف" alt="حذف">
+                    <button class="delete-button" title="حذف" type="submit" onclick="return confirm(' هل انت متاكد من عملية الحذف؟');" > <img width="30px" height="30px" src="{{asset('images/delete.png')}}" title="حذف" alt="حذف">
                     </button>
                 </form>
             </td>

@@ -46,7 +46,7 @@
                 {{$subject->hours}}
             </td>
             <td colspan="2" class="text-right">
-                <a class="btn btn-danger btn-block" href="{{route('teacher_subject.destroy',['subject_id'=>$subject->id,'teacher_id'=>$teacher->id,'year'=>$year])}}" title="">الغاء</a>
+                <a class="btn btn-danger btn-block" onclick="return confirm(' هل انت متاكد من عملية الحذف؟');"  href="{{route('teacher_subject.destroy',['subject_id'=>$subject->id,'teacher_id'=>$teacher->id,'year'=>$year])}}" title="">الغاء</a>
             </td>
             </tr>  
             @endif

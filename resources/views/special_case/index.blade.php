@@ -81,7 +81,7 @@
             </td>
             <td class="text-right" >
 
-                    <a href="{{route('special_case.destroy',['special_case_id'=>$specialcase->id,'student_id'=>$student->id])}}" class="delete-button" title="حذف" > <img width="30px" height="30px" src="{{asset('images/delete.png')}}" title="حذف" alt="حذف">
+                    <a href="{{route('special_case.destroy',['special_case_id'=>$specialcase->id,'student_id'=>$student->id])}}" onclick="return confirm(' هل انت متاكد من عملية الحذف؟');"  class="delete-button" title="حذف" > <img width="30px" height="30px" src="{{asset('images/delete.png')}}" title="حذف" alt="حذف">
                     </a>
 
             </td>
