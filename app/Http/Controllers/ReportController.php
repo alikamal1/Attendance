@@ -94,4 +94,40 @@ class ReportController extends Controller
                                         ->with('datefrom',$datefrom)
                                         ->with('dateto',$dateto);
     }
+
+    public function index_absent()
+    {
+    	return view('report.index_absent');
+    }
+
+    public function show_absent(Request $request)
+    {
+        
+        // $int = (int) filter_var($str, FILTER_SANITIZE_NUMBER_INT);
+        // dd($int);
+
+        // dd($request);
+    	
+    	$datefrom = $request->datefrom;
+    	$dateto = $request->dateto;
+    	$level_id = $request->level_id;
+
+    	$subjects = Level::find($level_id)->subjects()->get();
+    	$students = Level::find($level_id)->students()->get();
+
+    	$level = Level::find($level_id);
+        $students = Student::where('level_id',$level_id)->get();
+        
+        $ratio = $request->ratio;
+        $ratio_int = (int) filter_var($ratio, FILTER_SANITIZE_NUMBER_INT);
+
+    	return view('report.show_absent')->with('students',$students)
+								    	->with('subjects',$subjects)
+								    	->with('level',$level)
+    									->with('datefrom',$datefrom)
+                                        ->with('dateto',$dateto)
+                                        ->with('ratio',$ratio)
+                                        ->with('ratio_int',$ratio_int);
+
+    }
 }

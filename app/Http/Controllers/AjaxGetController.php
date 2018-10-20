@@ -69,4 +69,10 @@ class AjaxGetController extends Controller
         return response()->json(array('teachers' => $teachers), 200);
     }
 
+    public function getratio()
+    {
+        $ratio = Setting::where('name','انذرات')->orderBy('created_at')->get();
+    	return response()->json(array('data'=> $ratio), 200);
+    }
+
 }

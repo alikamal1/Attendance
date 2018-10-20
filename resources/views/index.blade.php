@@ -22,7 +22,7 @@
     <div class="card-body">
     <img src="{{asset('images/report.png')}}" alt="">
     <hr>
-    <a href="{{route('report.index')}}" class="btn btn-lg btn-block btn-primary">تقارير الغيابات</a>
+    <a href="{{route('report.home')}}" class="btn btn-lg btn-block btn-primary">تقارير الغيابات</a>
     </div>
   </div>
   

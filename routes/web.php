@@ -52,6 +52,8 @@ Route::get('/ajax/getattendancelist/{subject_id}','AjaxGetController@getattendan
 Route::get('/ajax/getlevelid/{year}/{study}/{stage}/{branch}','AjaxGetController@getlevelid');
 Route::get('/ajax/getstudents/{year}/{study}/{stage}/{branch}','AjaxGetController@getstudents');
 Route::get('/ajax/getteachers/','AjaxGetController@getteachers');
+Route::get('/ajax/getratio/','AjaxGetController@getratio');
+
 
 
 
@@ -77,7 +79,8 @@ Route::get('/report/index_subject_based','ReportController@index_subject_based')
 Route::get('/report/show_subject_based','ReportController@show_subject_based')->name('report.show_subject_based');
 Route::get('/report/index_student_based','ReportController@index_student_based')->name('report.index_student_based');
 Route::get('/report/show_student_based','ReportController@show_student_based')->name('report.show_student_based');
-
+Route::get('/report/index_absent','ReportController@index_absent')->name('report.index_absent');
+Route::get('/report/show_absent','ReportController@show_absent')->name('report.show_absent');
 
 Route::get('/special_case/{student_id}','SpecialCaseController@index')->name('special_case.index');
 Route::get('/special_case/create/{student_id}','SpecialCaseController@create')->name('special_case.create');
