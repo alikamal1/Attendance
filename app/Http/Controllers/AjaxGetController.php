@@ -74,5 +74,16 @@ class AjaxGetController extends Controller
         $ratio = Setting::where('name','انذرات')->orderBy('created_at')->get();
     	return response()->json(array('data'=> $ratio), 200);
     }
+    
+    public function is_duplicated($subject_selected,$year,$month, $day)
+    {
+        $date = $year .'-'. $month .'-'. $day;
+        $subject_selected_id = Subject::where('name',$subject_selected)->first()->id;
+        $check_duplication = Attendance::where('date',$date)->where('subject_id',$subject_selected_id)->first();
+        if($check_duplication === null)
+            return response()->json(false, 200);
+        else
+            return response()->json(true, 200);
+    }
 
 }

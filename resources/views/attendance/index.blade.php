@@ -18,6 +18,9 @@
         $("#subjectdiv").hide();
         $("#datediv").hide();
         $("#submitdiv").hide();
+        $("#is_duplicated").hide();
+
+        
 
         $.ajax({
                type:'GET',
@@ -31,6 +34,7 @@
                             $("#datediv").hide();
                             $("#submitdiv").hide();
                             $("#showresult").hide();
+                            $("#is_duplicated").hide();
 
                             $("#year").empty();
                             $("#year").append('<option>اختر السنة الدراسية</option>');
@@ -54,6 +58,7 @@
                             $("#datediv").hide();
                             $("#submitdiv").hide();
                             $("#showresult").hide()
+                            $("#is_duplicated").hide();
 
                             $("#study").empty();
                             $("#study").append('<option>اختر نوع الدراسة</option>');
@@ -77,6 +82,7 @@
                             $("#datediv").hide();
                             $("#submitdiv").hide();
                             $("#showresult").hide()
+                            $("#is_duplicated").hide();
 
                             $("#stage").empty();
                             $("#stage").append('<option> اختر المرحلة الدراسية </option>');
@@ -100,6 +106,7 @@
                             $("#datediv").hide();
                             $("#submitdiv").hide();
                             $("#showresult").hide()
+                            $("#is_duplicated").hide();
 
                             $("#branch").empty();
                             $("#branch").append('<option>اختر التخصص الدراسي </option>');
@@ -123,6 +130,7 @@
                             $("#datediv").hide();
                             $("#submitdiv").hide();
                             $("#showresult").hide()
+                            $("#is_duplicated").hide();
                             
                             $("#subject").empty();
                             $("#subject").append('<option>اختر المادة الدراسية</option>');
@@ -136,11 +144,43 @@
         function getdate()
         {
             $("#datediv").show();
+            $("#is_duplicated").hide();
+        }
+        
+        function is_duplicated()
+        {
+            subject_selected = $("#subject").find(":selected").text();
+            date_selected = $("#date")[0].value;
+            date_selected = date_selected.split('/');
+            year = date_selected[0];
+            month = date_selected[1];
+            day = date_selected[2];
+
+            //console.log(subject_selected);
+            //console.log(date_selected);
+            $.ajax({
+               type:'GET',
+               url:'/ajax/is_duplicated/' + subject_selected + '/' + year + '/' + month + '/' + day,
+               success: function(response){
+                //console.log(response);
+                          if(response == false)
+                            getsubmit();
+                          else
+                          {
+                            $("#is_duplicated").show();
+                            $("#submitdiv").hide();
+                          }
+                          
+                        }
+                    });  
         }
 
         function getsubmit()
         {
+            
             $("#submitdiv").show();
+            $("#is_duplicated").hide();
+            
         }
 
 
@@ -195,9 +235,12 @@
         </div>
         <div class="form-group col-md-6"  id="datediv" >   
             <label style="float: right;">التاريخ</label>
-            <input type="text" id="date"  name="date" class="form-group" data-provide="datepicker" style="text-align: center; padding: 5px; margin-top:32px;" onchange="getsubmit()" autocomplete="off">
+            <input type="text" id="date"  name="date" class="form-group" data-provide="datepicker" style="text-align: center; padding: 5px; margin-top:32px;" onchange="is_duplicated()" autocomplete="off">
         </div>
     </div>
+    <div id="is_duplicated" class="alert alert-info text-center" role="alert">
+       تم ادخال قائمة الغياب مسبقا
+      </div>
     <div class="form-group" id="submitdiv">
         <button type="submit" class="btn btn-success btn-block btn-lg"> ادخال الغيابات</button>
     </div>
