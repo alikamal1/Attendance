@@ -53,7 +53,7 @@ Route::get('/ajax/getlevelid/{year}/{study}/{stage}/{branch}','AjaxGetController
 Route::get('/ajax/getstudents/{year}/{study}/{stage}/{branch}','AjaxGetController@getstudents');
 Route::get('/ajax/getteachers/','AjaxGetController@getteachers');
 Route::get('/ajax/getratio/','AjaxGetController@getratio');
-Route::get('/ajax/is_duplicated/{subject_selected}/{year}/{month}/{day}','AjaxGetController@is_duplicated');
+Route::get('/ajax/is_duplicated/{subject_selected}/{year}/{month}/{day}/{years}/{study}/{stage}/{branch}','AjaxGetController@is_duplicated');
 
 
 
@@ -103,11 +103,4 @@ Route::get('/copydatasubjects','CopyDataController@copySubject')->name('copy.sub
 
 
 });
-
-
-
-
-
-
-
 

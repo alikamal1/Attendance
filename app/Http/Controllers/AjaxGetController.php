@@ -75,12 +75,14 @@ class AjaxGetController extends Controller
     	return response()->json(array('data'=> $ratio), 200);
     }
     
-    public function is_duplicated($subject_selected,$year,$month, $day)
+    public function is_duplicated($subject_selected,$year,$month, $day,$years,$study,$stage,$branch)
     {
         $date = $year .'-'. $month .'-'. $day;
-        $subject_selected_id = Subject::where('name',$subject_selected)->first()->id;
+        $level_id = Level::where('year',$years)->where('study',$study)->where('stage',$stage)->where('branch',$branch)->first()->id;
+		$subject_selected_id = Level::find($level_id)->subjects()->where('name',$subject_selected)->first()->id;
         $check_duplication = Attendance::where('date',$date)->where('subject_id',$subject_selected_id)->first();
-        if($check_duplication === null)
+		
+        if($check_duplication == null)
             return response()->json(false, 200);
         else
             return response()->json(true, 200);

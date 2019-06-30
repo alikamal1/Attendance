@@ -150,6 +150,11 @@
         function is_duplicated()
         {
             subject_selected = $("#subject").find(":selected").text();
+			years = $("#year").find(":selected").text();
+			study = $("#study").find(":selected").text();
+			stage = $("#stage").find(":selected").text();
+			branch = $("#branch").find(":selected").text();
+			subject_selected = $("#subject").find(":selected").text();
             date_selected = $("#date")[0].value;
             date_selected = date_selected.split('/');
             year = date_selected[0];
@@ -160,7 +165,7 @@
             //console.log(date_selected);
             $.ajax({
                type:'GET',
-               url:'/ajax/is_duplicated/' + subject_selected + '/' + year + '/' + month + '/' + day,
+               url:'/ajax/is_duplicated/' + subject_selected + '/' + year + '/' + month + '/' + day + '/' + years + '/' +study+ '/' +stage+ '/' +branch,
                success: function(response){
                 //console.log(response);
                           if(response == false)
