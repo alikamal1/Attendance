@@ -100,6 +100,25 @@ Route::get('/copydata/copysubjectindex','CopyDataController@copySubjectindex')->
 Route::get('/copydatastudents','CopyDataController@copyStudent')->name('copy.student');
 Route::get('/copydatasubjects','CopyDataController@copySubject')->name('copy.subject');
 
+Route::get('/teacher_app','TeacherAppController@Login')->name('teacher_app.login');
+Route::post('/teacher_app','TeacherAppController@LoginRequest')->name('teacher_app.loginRequest');
+
+
+
+Route::get('/ajax/Teacherapp/getyear','AjaxGetTeacherAppController@getyear');
+Route::get('/ajax/Teacherapp/getstudy/{year}','AjaxGetTeacherAppController@getstudy');
+Route::get('/ajax/Teacherapp/getstage/{year}/{study}','AjaxGetTeacherAppController@getstage');
+Route::get('/ajax/Teacherapp/getbranch/{year}/{study}/{stage}','AjaxGetTeacherAppController@getbranch');
+Route::get('/ajax/Teacherapp/getsubject/{year}/{study}/{stage}/{branch}/{teacher}','AjaxGetTeacherAppController@getsubject');
+Route::get('/ajax/Teacherapp/getattendancelist/{subject_id}','AjaxGetTeacherAppController@getattendancelist');
+Route::get('/ajax/Teacherapp/getlevelid/{year}/{study}/{stage}/{branch}','AjaxGetTeacherAppController@getlevelid');
+Route::get('/ajax/Teacherapp/getstudents/{year}/{study}/{stage}/{branch}','AjaxGetTeacherAppController@getstudents');
+Route::get('/ajax/Teacherapp/getteachers/','AjaxGetTeacherAppController@getteachers');
+Route::get('/ajax/Teacherapp/getratio/','AjaxGetTeacherAppController@getratio');
+Route::get('/ajax/Teacherapp/is_duplicated/{subject_selected}/{year}/{month}/{day}/{years}/{study}/{stage}/{branch}','AjaxGetTeacherAppController@is_duplicated');
+
+Route::get('/teacher_app/attendance','TeacherAppController@record')->name('teacher_app_attendance.record');
+Route::get('/teacher_app/attendance/store','TeacherAppController@store')->name('teacher_app_attendance.store');
 
 
 });

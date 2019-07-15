@@ -113,7 +113,7 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item" >
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('teacher_app.login') }}">{{ __('teacher_app.login') }}</a>
                             </li>
                             {{-- <li class="nav-item">
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -157,76 +157,7 @@
                 @yield('content')
             </div>  
             @auth
-            <div class="col-md-3" id="menudiv">
-            <div class="card border-dark">
-            <div class="card-header text-white bg-dark"><b> القائمة الرئيسية </b></div>   
-            <div class="card-body">
-                <aside class="menu">
-
-                    <hr style="margin: 0">
-                    <p class="menu-label align-content-center">
-                      القائمة الرئيسية
-                    </p>
-                    <hr style="margin: 0">
-                    <ul class="menu-list">
-                    <li class="text-right"><a href="{{route('index')}}"  >الصفحة الرئيسية  <img src="{{asset('images/home.png')}}" width="30px"></a></li>
-                    </ul>
-                    
-                    <hr style="margin: 0">
-                    <p class="menu-label align-content-center">
-                      الغيابات
-                    </p>
-                    <hr style="margin: 0">
-                    <ul class="menu-list">
-                    <li class="text-right"><a href="{{route('attendance.index')}}"  {{ (basename(url()->current()) === 'attendance') > 0  ? "class=is-active":"" }}>ادخال الغياب  <img src="{{asset('images/absent.png')}}" width="30px"></a></li>
-                    <li class="text-right"><a href="{{route('attendance.show')}}"  {{ (basename(url()->current()) === 'show')  > 0  ? "class=is-active":"" }}>تعديل الغيابات   <img src="{{asset('images/edit_absent.png')}}" width="30px"></a></li>
-
-                    <hr style="margin: 0">
-                    <p class="menu-label align-content-center">
-                      التقارير
-                    </p>
-                    <hr style="margin: 0">
-                    <ul class="menu-list">
-                    <li class="text-right"><a href="{{route('report.home')}}"  {{ strpos(url()->current(),'report') > 0  ? "class=is-active":"" }} >تقارير الغيابات <img src="{{asset('images/report.png')}}" width="30px"></a></li>
-
-                    <hr style="margin: 0">
-                    <p class="menu-label align-content-center">
-                      تخصيصي المواد
-                    </p>
-                    <hr style="margin: 0">
-                    <ul class="menu-list">
-                    <li class="text-right"><a href="{{route('teacher_subject.home')}}" {{ (basename(url()->current()) === 'home') > 0  ? "class=is-active":"" }}> المواد والتدريسين <img src="{{asset('images/teacher_subject.png')}}" width="30px"></a></li>
-
-                    <hr style="margin: 0">
-                    <p class="menu-label text-right">
-                     السنة الدراسية الكاملة 
-                    </p>
-                    <hr style="margin: 0">
-
-                    <ul class="menu-list">
-                    
-                    <li class="text-right"><a href="{{route('student.index')}}" {{ (basename(url()->current()) === 'student') > 0  ? "class=is-active":"" }}>الطلاب  <img src="{{asset('images/student.png')}}" width="30px"></a></li>
-                    <li class="text-right"><a href="{{route('teacher.index')}}" {{(basename(url()->current()) === 'teacher') > 0  ? "class=is-active":"" }}>التدريسين  <img src="{{asset('images/profile.png')}}" width="30px"></a></li>
-                    
-                    </ul>
-
-                    <hr style="margin: 0">
-                    <p class="menu-label text-right">
-                      الاعدادات
-                    </p>
-                    <hr style="margin: 0">
-                    <ul class="menu-list">
-                    <li class="text-right"><a href="{{route('subject.index')}}" {{ (basename(url()->current()) === 'subject') > 0  ? "class=is-active":"" }}>المواد الدارسية  <img src="{{asset('images/subjects.png')}}" width="30px"></a></li>
-                    <li class="text-right"> <a href="{{route('level.index')}}" {{ strpos(url()->current(),'level') > 0  ? "class=is-active":"" }}>المراحل الدراسية  <img src="{{asset('images/level.png')}}" width="30px"></a></li>
-                    <li class="text-right"><a href="{{route('copy.index')}}" {{ strpos(url()->current(),'copy') > 0  ? "class=is-active":"" }}> نسخ االقوائم  <img src="{{asset('images/copy.png')}}" width="30px"></a></li>
-                    <li class="text-right"><a href="{{route('setting.index')}}" {{ strpos(url()->current(),'setting') > 0  ? "class=is-active":"" }}>اعدادات النظام  <img src="{{asset('images/setting.png')}}" width="30px"></a></li>
-                    </ul>
-                    
-                </aside>
-            </div>
-            </div>
-          
-                </div>
+        
                 @endauth
                 
     </div>
